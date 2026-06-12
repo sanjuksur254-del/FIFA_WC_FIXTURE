@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>FIFA World Cup 2026 · Fixtures · IST/GCC</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#03050D;--bg2:#070F1C;--bg3:#0A1424;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.15);--green:#00E676;--green-dim:rgba(0,230,118,0.12);--gold:#FFD700;--gold-dim:rgba(255,215,0,0.12);--red:#FF453A;--red-dim:rgba(255,69,58,0.12);--blue:#2979FF;--blue-dim:rgba(41,121,255,0.12);--text:#EDF2FA;--muted:#3D5070;--muted2:#7A90B8;--gg:linear-gradient(135deg,#00E676,#00BCD4);--gd:linear-gradient(135deg,#FFD700,#FF8F00)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 20px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 140% 90% at 50% 65%,#071830 0%,#030818 50%,var(--bg) 100%)}
+.orb{position:absolute;border-radius:50%;pointer-events:none}
+.orb1{width:600px;height:600px;background:radial-gradient(circle,rgba(0,230,118,0.07) 0%,transparent 70%);top:-100px;left:-150px;animation:od 18s ease-in-out infinite alternate}
+.orb2{width:500px;height:500px;background:radial-gradient(circle,rgba(255,215,0,0.06) 0%,transparent 70%);bottom:-80px;right:-100px;animation:od 22s ease-in-out infinite alternate-reverse}
+@keyframes od{0%{transform:translate(0,0) scale(1)}100%{transform:translate(40px,30px) scale(1.08)}}
+.pitch-svg{position:absolute;inset:0;opacity:0.055;pointer-events:none}
+.hc{position:relative;z-index:2;width:100%;max-width:820px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,215,0,0.35);border-radius:100px;padding:7px 20px;margin-bottom:18px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase;background:rgba(255,215,0,0.08)}
+.h-big{font-family:'Barlow Condensed',sans-serif;font-size:clamp(11px,2.5vw,14px);font-weight:700;letter-spacing:6px;color:rgba(0,230,118,0.8);text-transform:uppercase;margin-bottom:6px}
+.h-tour{font-family:'Barlow Condensed',sans-serif;font-size:clamp(13px,3.5vw,18px);font-weight:300;letter-spacing:8px;color:var(--muted2);text-transform:uppercase;margin-bottom:6px}
+.h-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,26vw,210px);color:var(--text);line-height:0.85;letter-spacing:-2px;text-shadow:0 0 80px rgba(0,230,118,0.2);margin-bottom:10px}
+.h-title span{background:var(--gg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.h-sub{font-family:'Barlow Condensed',sans-serif;font-size:clamp(13px,3.5vw,18px);font-weight:600;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:20px}
+.h-hosts{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.host-pill{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:100px;padding:8px 18px;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;letter-spacing:1px;display:flex;align-items:center;gap:6px}
+.cd-wrap{margin-bottom:20px}
+.cd-msg{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;color:var(--muted2);text-transform:uppercase;margin-bottom:8px}
+.countdown{display:inline-flex;background:rgba(0,230,118,0.06);border:1px solid rgba(0,230,118,0.2);border-radius:14px;overflow:hidden}
+.cdu{padding:12px 16px;text-align:center;border-right:1px solid rgba(0,230,118,0.1)}
+.cdu:last-child{border-right:none}
+.cdn{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,7vw,44px);color:var(--green);line-height:1;display:block;min-width:42px;text-shadow:0 0 20px rgba(0,230,118,0.4)}
+.cdl{font-size:8px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;display:block;margin-top:2px}
+.cd-live{color:var(--red);animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.h-stats{display:inline-flex;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:18px;margin-bottom:24px;overflow:hidden}
+.hs{padding:16px 22px;border-right:1px solid var(--border);text-align:center}
+.hs:last-child{border-right:none}
+.hs-n{font-family:'Bebas Neue',sans-serif;font-size:38px;background:var(--gg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;line-height:1}
+.hs-l{font-size:9px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;display:block;margin-top:2px}
+.cta-btn{background:var(--gg);color:#020a14;border:none;border-radius:100px;padding:15px 44px;font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 24px rgba(0,230,118,0.3)}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 8px 40px rgba(0,230,118,0.5)}
+/* NAV */
+.sh{position:sticky;top:0;z-index:200;background:rgba(3,5,13,0.92);backdrop-filter:blur(28px);border-bottom:1px solid rgba(0,230,118,0.08)}
+.tz-bar{display:flex;align-items:center;justify-content:space-between;padding:5px 16px;border-bottom:1px solid var(--border)}
+.tz-bar-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--muted2);text-transform:uppercase}
+.tz-btns{display:flex;gap:4px}
+.tz-btn{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:7px;padding:5px 14px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;color:var(--muted2);cursor:pointer;transition:all 0.2s;min-height:32px}
+.tz-btn.active{background:var(--green-dim);border-color:var(--green);color:var(--green)}
+.snav{overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+.snav::-webkit-scrollbar{display:none}
+.ni{display:inline-flex;padding:0 12px}
+.nb{background:none;border:none;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:14px 14px;cursor:pointer;color:var(--muted2);transition:all 0.2s;border-bottom:2px solid transparent;position:relative;top:1px;white-space:nowrap;min-height:46px}
+.nb:hover{color:var(--text)}
+.nb.active{color:var(--green);border-bottom-color:var(--green)}
+.nb-today.active{color:var(--red);border-bottom-color:var(--red)}
+/* TABS */
+.tab{display:none}.tab.active{display:block}
+.section{padding:24px 16px 40px;max-width:860px;margin:0 auto}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,7vw,48px);letter-spacing:4px;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.sec-sub{font-size:11px;color:var(--muted2);letter-spacing:1.5px;margin-bottom:20px;text-transform:uppercase}
+.sec-a{background:var(--gg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+/* MATCH CARD */
+.mc{background:linear-gradient(160deg,rgba(10,20,36,0.95),rgba(5,10,20,0.98));border:1px solid rgba(255,255,255,0.08);border-radius:18px;overflow:hidden;margin-bottom:10px;transition:all 0.25s cubic-bezier(.2,.8,.3,1);cursor:pointer;position:relative}
+.mc:hover{border-color:rgba(0,230,118,0.25);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.mc.key-match{border-color:rgba(255,215,0,0.3);background:linear-gradient(160deg,rgba(18,14,5,0.98),rgba(8,7,3,0.98))}
+.mc.key-match:hover{border-color:rgba(255,215,0,0.6)}
+.mc-top{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.06);font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;gap:8px;flex-wrap:wrap}
+.mc-no{color:#5B8AFF;font-weight:700}
+.mc-grp{background:rgba(41,121,255,0.12);border:1px solid rgba(41,121,255,0.25);border-radius:5px;padding:2px 8px;color:#7EB3FF;font-size:10px;font-weight:700;letter-spacing:1px}
+.mc-grp.gd{background:var(--red-dim);border-color:rgba(255,69,58,0.35);color:#FF8A80}
+.mc-date{color:var(--muted2);font-weight:600;white-space:nowrap}
+.mc-body{display:grid;grid-template-columns:1fr 92px 1fr;align-items:center;padding:16px 12px;gap:4px}
+.tside{display:flex;flex-direction:column;align-items:center;gap:7px}
+.tflag{font-size:clamp(32px,8vw,46px);line-height:1;filter:drop-shadow(0 3px 12px rgba(0,0,0,0.6));transition:transform 0.2s}
+.mc:hover .tflag{transform:scale(1.08)}
+.tname{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(12px,3vw,15px);letter-spacing:1.5px;text-transform:uppercase;text-align:center;color:var(--text);line-height:1.2}
+.mc-ctr{display:flex;flex-direction:column;align-items:center;gap:4px}
+.mc-time{font-family:'Bebas Neue',sans-serif;font-size:clamp(18px,5vw,26px);background:var(--gg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:1px;line-height:1}
+.mc-tzl{font-size:8px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700}
+.mc-vs{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--muted2);text-transform:uppercase;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:5px;padding:3px 8px}
+.mc-bot{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-top:1px solid rgba(255,255,255,0.05);gap:8px;flex-wrap:wrap}
+.mc-venue{font-size:11px;color:var(--muted2);font-style:italic}
+.mc-badges{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.bdg{display:inline-block;border-radius:5px;padding:2px 7px;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
+.bdg-opening{background:var(--gold-dim);border:1px solid rgba(255,215,0,0.35);color:var(--gold)}
+.bdg-watch{background:var(--red-dim);border:1px solid rgba(255,69,58,0.35);color:#FF8A80}
+.bdg-rivalry{background:var(--blue-dim);border:1px solid rgba(41,121,255,0.3);color:#7EB3FF}
+.bdg-decider{background:var(--green-dim);border:1px solid rgba(0,230,118,0.3);color:var(--green)}
+.bdg-god{background:var(--red-dim);border:1px solid rgba(255,69,58,0.3);color:#FF8A80}
+/* DETAIL PANEL */
+.mc-detail{display:none;border-top:1px solid rgba(0,230,118,0.15);background:linear-gradient(160deg,rgba(0,18,12,0.8),rgba(0,8,6,0.9))}
+.mc-detail.open{display:block;animation:din 0.22s ease}
+@keyframes din{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.d-story{padding:12px 14px;border-bottom:1px solid rgba(0,230,118,0.1)}
+.d-label{font-size:9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:2px;color:var(--green);text-transform:uppercase;margin-bottom:5px}
+.d-text{font-size:12px;color:var(--muted2);line-height:1.65;margin-bottom:8px}
+.d-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.heroes-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;color:var(--green);text-transform:uppercase;padding:10px 14px 0;opacity:0.8}
+.heroes-split{display:grid;grid-template-columns:1fr 1px 1fr;padding:8px 0 14px}
+.heroes-col{padding:0 12px;display:flex;flex-direction:column;gap:8px}
+.heroes-hd{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:2px;opacity:0.9}
+.heroes-div{background:rgba(0,230,118,0.15);width:1px}
+.hcard{background:rgba(0,230,118,0.04);border:1px solid rgba(0,230,118,0.12);border-radius:10px;padding:9px 11px;transition:border-color 0.2s}
+.hcard:hover{border-color:rgba(0,230,118,0.3)}
+.hcard-top{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.hc-flag{font-size:20px;flex-shrink:0}
+.hc-name{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:.5px;color:var(--text);line-height:1.2}
+.hc-pos{display:inline-block;font-size:8px;color:#020a14;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-top:2px;background:var(--green);border-radius:3px;padding:1px 5px}
+.hc-desc{font-size:11px;color:var(--muted2);line-height:1.6}
+@media(max-width:480px){.heroes-split{grid-template-columns:1fr}.heroes-div{display:none}}
+/* GROUP/KO/VENUE/etc */
+.gtabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.gtab{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:7px 14px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:1px;color:var(--muted2);cursor:pointer;transition:all 0.2s;min-height:36px}
+.gtab:hover{color:var(--text);border-color:rgba(255,255,255,0.18)}
+.gtab.active{background:var(--green-dim);border-color:rgba(0,230,118,0.35);color:var(--green)}
+.gpanel{display:none}.gpanel.active{display:block}
+.g-banner{background:linear-gradient(135deg,rgba(8,16,28,0.95),rgba(0,230,118,0.07));border:1px solid rgba(0,230,118,0.22);border-radius:16px 16px 0 0;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid rgba(0,230,118,0.35);flex-wrap:wrap;gap:10px}
+.g-letter{font-family:'Bebas Neue',sans-serif;font-size:48px;background:var(--gg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;letter-spacing:4px}
+.g-teams{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.gchip{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:5px 10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px}
+.g-matches{border:1px solid rgba(0,230,118,0.12);border-top:none;border-radius:0 0 16px 16px;overflow:hidden;padding:10px;background:rgba(0,0,0,0.2)}
+.god-banner{background:linear-gradient(135deg,rgba(255,69,58,0.15),rgba(255,69,58,0.05));border:1px solid rgba(255,69,58,0.3);border-radius:10px;padding:10px 14px;margin-bottom:12px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;color:var(--red);text-transform:uppercase}
+.ko-hd{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;background:var(--gd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;padding:18px 4px 10px;border-bottom:1px solid rgba(255,215,0,0.15);margin-bottom:12px}
+.ko-row{background:rgba(8,15,28,0.7);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:11px 14px;margin-bottom:8px;display:grid;grid-template-columns:32px 68px 58px 1fr auto;align-items:center;gap:8px;transition:all 0.2s;min-height:48px}
+.ko-row:hover{border-color:rgba(255,215,0,0.2)}
+.ko-no{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;color:var(--gold)}
+.ko-date{font-size:10px;color:var(--muted2);line-height:1.4}
+.ko-time{font-family:'Bebas Neue',sans-serif;font-size:17px;color:var(--green)}
+.ko-teams{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:13px;color:var(--muted2)}
+.ko-venue{font-size:10px;color:var(--muted2);text-align:right}
+.final-card{background:linear-gradient(135deg,#140C00,#080500,#140C00);border:2px solid rgba(255,215,0,0.55);border-radius:22px;padding:36px 24px;text-align:center;margin:24px 0;position:relative;overflow:hidden;box-shadow:0 0 60px rgba(255,215,0,0.1)}
+.final-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,215,0,0.15) 0%,transparent 65%)}
+.final-card-l{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:4px;color:rgba(255,215,0,0.7);text-transform:uppercase;margin-bottom:8px;position:relative}
+.final-card-t{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,12vw,72px);letter-spacing:5px;background:var(--gd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:10px;position:relative}
+.final-card-m{font-family:'Barlow Condensed',sans-serif;font-size:17px;color:rgba(255,255,255,0.85);font-weight:600;position:relative}
+.ov-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:18px}
+.ov-card{background:linear-gradient(135deg,rgba(8,16,28,0.95),rgba(4,8,16,0.98));border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 14px}
+.ov-label{font-size:10px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;margin-bottom:4px}
+.ov-val{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;color:var(--text)}
+.tzrow{display:grid;grid-template-columns:1fr auto auto;padding:9px 16px;font-size:12px;border-bottom:1px solid var(--border);align-items:center;gap:12px}
+.tzrow:last-child{border-bottom:none}
+.prog-card{background:linear-gradient(135deg,rgba(8,16,28,0.95),rgba(0,230,118,0.04));border:1px solid rgba(0,230,118,0.15);border-radius:14px;padding:16px 18px;margin-bottom:16px}
+.prog-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.prog-lbl{font-size:10px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700}
+.prog-val{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--green)}
+.prog-bg{height:6px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;margin-bottom:10px}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--green),#00BCD4,var(--gold));border-radius:3px}
+.prog-stats{display:flex;gap:16px;flex-wrap:wrap}
+.prog-stat{font-size:12px;color:var(--muted2);font-family:'Barlow Condensed',sans-serif;font-weight:600}
+.prog-stat span{color:var(--green);font-weight:700}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.vcard{background:linear-gradient(135deg,rgba(8,16,28,0.95),rgba(4,8,16,0.98));border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:14px;display:flex;gap:10px;align-items:flex-start;transition:all 0.2s}
+.vcard:hover{border-color:rgba(0,230,118,0.2);transform:translateY(-2px)}
+.vnum{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);opacity:0.25;line-height:1;min-width:28px}
+.vname{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;color:var(--text)}
+.vloc{font-size:11px;color:var(--muted2);margin-top:3px}
+.vcap{font-size:11px;color:var(--gold);margin-top:4px;font-weight:600;font-family:'Barlow Condensed',sans-serif}
+.qr-list{display:flex;flex-direction:column;gap:8px}
+.qr-item{background:linear-gradient(135deg,rgba(8,16,28,0.95),rgba(4,8,16,0.98));border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:13px 16px;display:grid;grid-template-columns:72px 1fr auto;align-items:center;gap:12px;transition:all 0.25s;min-height:56px}
+.qr-item:hover{border-color:rgba(0,230,118,0.25);transform:translateX(4px)}
+.qr-item.key{border-color:rgba(255,215,0,0.25);background:linear-gradient(135deg,rgba(16,12,2,0.97),rgba(8,6,1,0.99))}
+.qr-date{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;color:var(--gold);line-height:1.3}
+.qr-match{font-weight:600;font-size:13px;line-height:1.3}
+.qr-venue{font-size:10px;color:var(--muted2);margin-top:2px}
+.qr-time{font-family:'Bebas Neue',sans-serif;font-size:19px;background:var(--gg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;white-space:nowrap}
+.po-box{background:rgba(255,69,58,0.06);border:1px solid rgba(255,69,58,0.2);border-radius:14px;padding:14px 16px;margin-bottom:18px}
+.po-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:10px}
+.po-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px}
+.po-item{display:flex;gap:8px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:600;align-items:flex-start}
+.po-path{color:var(--gold);min-width:68px}
+.dhd{font-family:'Bebas Neue',sans-serif;letter-spacing:3px;font-size:20px;color:var(--text);padding:16px 4px 8px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(0,230,118,0.12);margin-bottom:8px}
+.dhd-c{font-size:12px;letter-spacing:1px;color:var(--muted2);font-family:'Barlow Condensed',sans-serif;font-weight:600}
+.dhd-d{font-size:11px;letter-spacing:2px;color:var(--green);font-family:'Barlow Condensed',sans-serif;font-weight:700}
+.today-bann{background:linear-gradient(135deg,rgba(255,69,58,0.1),rgba(255,69,58,0.03));border:1px solid rgba(255,69,58,0.25);border-radius:16px;padding:16px 18px;margin-bottom:16px}
+.today-t{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--red);margin-bottom:2px}
+.today-s{font-size:11px;color:var(--muted2);letter-spacing:1.5px;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:600}
+.no-match{background:rgba(8,16,28,0.9);border:1px solid var(--border);border-radius:14px;padding:28px;text-align:center}
+.si-wrap{position:relative;margin-bottom:16px}
+.si{width:100%;background:rgba(8,16,28,0.9);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:15px 16px 15px 48px;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;color:var(--text);outline:none;transition:all 0.2s;letter-spacing:1px;min-height:52px}
+.si:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(0,230,118,0.1)}
+.si::placeholder{color:var(--muted2);font-weight:400}
+.si-ico{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted2);font-size:18px;pointer-events:none}
+.si-count{font-size:11px;color:var(--muted2);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;font-family:'Barlow Condensed',sans-serif;font-weight:600}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:6px;padding:10px}
+.fbtn{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px;cursor:pointer;transition:all 0.2s;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;color:var(--muted2);min-height:100px}
+.fbtn:hover{border-color:rgba(0,230,118,0.3);color:var(--text);transform:translateY(-2px)}
+.fav-hd{border-radius:16px;padding:20px;margin-bottom:14px;text-align:center;position:relative;overflow:hidden}
+.fav-hd::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.08) 0%,transparent 70%);pointer-events:none}
+.fact-card{background:linear-gradient(145deg,rgba(6,14,26,0.98),rgba(3,7,14,0.99));border:1px solid rgba(0,230,118,0.18);border-radius:20px;padding:28px 24px;min-height:180px;position:relative;overflow:hidden;margin-bottom:12px}
+.fact-card::after{content:attr(data-num);position:absolute;right:16px;bottom:8px;font-family:'Bebas Neue',sans-serif;font-size:110px;color:rgba(255,255,255,0.025);line-height:1;pointer-events:none}
+.fact-e{font-size:36px;display:block;margin-bottom:12px}
+.fact-t{font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,5vw,30px);letter-spacing:3px;background:var(--gg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px;line-height:1}
+.fact-b{font-size:14px;color:var(--muted2);line-height:1.7;max-width:560px}
+.fdots{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:20px}
+.fdot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.1);cursor:pointer;transition:all 0.25s;border:none}
+.fdot.active{background:var(--green);width:24px;border-radius:4px}
+.fbtn2{background:rgba(8,16,28,0.8);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 20px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;color:var(--muted2);cursor:pointer;transition:all 0.2s;min-height:36px}
+.fbtn2:hover{color:var(--green);border-color:rgba(0,230,118,0.35)}
+.facts-grid{display:grid;gap:8px;margin-top:16px}
+.fact-mini{background:linear-gradient(135deg,rgba(8,16,28,0.95),rgba(4,8,16,0.98));border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:14px;display:flex;align-items:flex-start;gap:12px;transition:all 0.2s}
+.fact-mini:hover{border-color:rgba(0,230,118,0.2);transform:translateX(3px)}
+.fm-i{font-size:24px;flex-shrink:0}
+.fm-t{font-size:13px;color:var(--muted2);line-height:1.6}
+.guide-sec{background:linear-gradient(135deg,rgba(41,121,255,0.07),transparent);border:1px solid rgba(41,121,255,0.15);border-radius:16px;padding:16px;margin-bottom:18px}
+.guide-hd{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:#7EB3FF;margin-bottom:12px}
+.guide-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:6px}
+.gc{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:11px;transition:all 0.2s}
+.gc:hover{border-color:rgba(41,121,255,0.3);transform:translateY(-2px)}
+.gc-i{font-size:20px;margin-bottom:5px;display:block}
+.gc-t{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;color:var(--text);margin-bottom:3px}
+.gc-d{font-size:11px;color:var(--muted2);line-height:1.5}
+.particle{position:fixed;width:2px;height:2px;border-radius:50%;background:var(--green);pointer-events:none;z-index:0;opacity:0;animation:pf linear infinite}
+@keyframes pf{0%{opacity:0;transform:translateY(100vh)}10%{opacity:.4}90%{opacity:.1}100%{opacity:0;transform:translateY(-10vh)}}
+@media(max-width:540px){.mc-body{grid-template-columns:1fr 72px 1fr;padding:12px 8px}.hs{padding:12px 14px}.ko-row{grid-template-columns:28px 1fr auto;row-gap:2px}.ko-date,.ko-venue{display:none}.ov-grid{grid-template-columns:1fr}.vgrid{grid-template-columns:1fr}.qr-item{grid-template-columns:56px 1fr auto}}
+@media(max-width:380px){.mc-body{grid-template-columns:1fr 60px 1fr}.tname{font-size:11px;letter-spacing:.5px}}
+</style>
+</head>
+<body>
+<div id="ptcls" style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden"></div>
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <svg class="pitch-svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+    <rect x="50" y="30" width="700" height="440" fill="none" stroke="white" stroke-width="1.5"/>
+    <line x1="400" y1="30" x2="400" y2="470" stroke="white" stroke-width="1.5"/>
+    <circle cx="400" cy="250" r="80" fill="none" stroke="white" stroke-width="1.5"/>
+    <circle cx="400" cy="250" r="5" fill="white"/>
+    <rect x="50" y="160" width="100" height="180" fill="none" stroke="white" stroke-width="1.5"/>
+    <rect x="650" y="160" width="100" height="180" fill="none" stroke="white" stroke-width="1.5"/>
+    <rect x="50" y="190" width="55" height="120" fill="none" stroke="white" stroke-width="1.5"/>
+    <rect x="695" y="190" width="55" height="120" fill="none" stroke="white" stroke-width="1.5"/>
+  </svg>
+  <div class="hc">
+    <div class="eyebrow" id="tz-badge">⚽ All Times in Indian Standard Time (IST)</div>
+    <div class="h-big">THE BIGGEST WORLD CUP EVER</div>
+    <div class="h-tour">FIFA &nbsp;·&nbsp; World Cup &nbsp;·&nbsp; Official Fixtures</div>
+    <div class="h-title">20<span>26</span></div>
+    <div class="h-sub">48 Nations &nbsp;·&nbsp; 104 Matches &nbsp;·&nbsp; 3 Hosts</div>
+    <div class="h-hosts">
+      <div class="host-pill">🇺🇸 United States</div>
+      <div class="host-pill">🇨🇦 Canada</div>
+      <div class="host-pill">🇲🇽 Mexico</div>
+    </div>
+    <div class="cd-wrap">
+      <div class="cd-msg" id="cd-msg">⏳ Until Opening Kickoff</div>
+      <div class="countdown" id="countdown">
+        <div class="cdu"><span class="cdn" id="cd-d">--</span><span class="cdl">Days</span></div>
+        <div class="cdu"><span class="cdn" id="cd-h">--</span><span class="cdl">Hours</span></div>
+        <div class="cdu"><span class="cdn" id="cd-m">--</span><span class="cdl">Mins</span></div>
+        <div class="cdu"><span class="cdn" id="cd-s">--</span><span class="cdl">Secs</span></div>
+      </div>
+    </div>
+    <div class="h-stats">
+      <div class="hs"><span class="hs-n">104</span><span class="hs-l">Matches</span></div>
+      <div class="hs"><span class="hs-n">48</span><span class="hs-l">Teams</span></div>
+      <div class="hs"><span class="hs-n">12</span><span class="hs-l">Groups</span></div>
+      <div class="hs"><span class="hs-n">16</span><span class="hs-l">Venues</span></div>
+      <div class="hs"><span class="hs-n">39</span><span class="hs-l">Days</span></div>
+    </div>
+    <div style="margin-top:24px"><button class="cta-btn" onclick="document.getElementById('sh').scrollIntoView({behavior:'smooth'})">Explore All Fixtures ↓</button></div>
+    <div style="margin-top:16px;font-size:11px;letter-spacing:2px;color:var(--muted);font-family:'Barlow Condensed',sans-serif">JUN 12 – JUL 19 · 2026 · METLIFE STADIUM FINAL</div>
+  </div>
+</section>
+<div class="sh" id="sh">
+  <div class="tz-bar">
+    <span class="tz-bar-label">🕐 Timezone</span>
+    <div class="tz-btns">
+      <button id="btn-ist" class="tz-btn active" onclick="setTZ('IST')">🇮🇳 IST</button>
+      <button id="btn-gcc" class="tz-btn" onclick="setTZ('GCC')">🇦🇪 GCC</button>
+    </div>
+  </div>
+  <nav class="snav" id="nav">
+    <div class="ni">
+      <button class="nb nb-today" onclick="showTab('today',this)">🔥 Today</button>
+      <button class="nb active" onclick="showTab('overview',this)">Overview</button>
+      <button class="nb" onclick="showTab('bydate',this)">📅 By Date</button>
+      <button class="nb" onclick="showTab('groups',this)">Groups</button>
+      <button class="nb" onclick="showTab('knockout',this)">Knockout</button>
+      <button class="nb" onclick="showTab('quickref',this)">Key Matches</button>
+      <button class="nb" onclick="showTab('venues',this)">Venues</button>
+      <button class="nb" onclick="showTab('search',this)">🔍 Search</button>
+      <button class="nb" onclick="showTab('myteam',this)">⭐ My Team</button>
+      <button class="nb" onclick="showTab('facts',this)">📚 Facts</button>
+    </div>
+  </nav>
+</div>
+<div id="tab-today" class="tab"><div class="section">
+  <div class="sec-title">🔥 <span class="sec-a">Today</span></div>
+  <div class="sec-sub" id="today-sub">Loading...</div>
+  <div id="today-content"></div>
+</div></div>
+<div id="tab-overview" class="tab active"><div class="section">
+  <div class="sec-title">Tournament <span class="sec-a">Guide</span></div>
+  <div class="sec-sub">FIFA World Cup 2026 · All times in selected timezone</div>
+  <div id="progTracker"></div>
+  <div class="ov-grid">
+    <div class="ov-card"><div class="ov-label">Tournament</div><div class="ov-val">FIFA World Cup 2026™</div></div>
+    <div class="ov-card"><div class="ov-label">Dates</div><div class="ov-val">Jun 12 – Jul 19, 2026</div></div>
+    <div class="ov-card"><div class="ov-label">Hosts</div><div class="ov-val">🇺🇸 USA · 🇨🇦 Canada · 🇲🇽 Mexico</div></div>
+    <div class="ov-card"><div class="ov-label">Teams</div><div class="ov-val">48 (Largest Ever)</div></div>
+    <div class="ov-card"><div class="ov-label">Format</div><div class="ov-val">12 Groups of 4</div></div>
+    <div class="ov-card"><div class="ov-label">Advance</div><div class="ov-val">Top 2 + 8 best 3rd</div></div>
+    <div class="ov-card"><div class="ov-label">Matches</div><div class="ov-val" style="color:var(--green)">104 Total</div></div>
+    <div class="ov-card"><div class="ov-label">Final</div><div class="ov-val">MetLife Stadium, NJ</div></div>
+  </div>
+  <div class="po-box">
+    <div class="po-title">✅ Confirmed Playoff Qualifiers (March 31, 2026)</div>
+    <div class="po-grid">
+      <div class="po-item"><span class="po-path">UEFA A →</span><span>🇧🇦 <b>Bosnia & Herzegovina</b> beat Italy on pens → Group B</span></div>
+      <div class="po-item"><span class="po-path">UEFA B →</span><span>🇸🇪 <b>Sweden</b> 3–2 Poland → Group F</span></div>
+      <div class="po-item"><span class="po-path">UEFA C →</span><span>🇹🇷 <b>Türkiye</b> 1–0 Kosovo → Group D</span></div>
+      <div class="po-item"><span class="po-path">UEFA D →</span><span>🇨🇿 <b>Czechia</b> beat Denmark on pens → Group A</span></div>
+      <div class="po-item"><span class="po-path">IC Path 1 →</span><span>🇨🇩 <b>DR Congo</b> 1–0 aet Jamaica → Group K</span></div>
+      <div class="po-item"><span class="po-path">IC Path 2 →</span><span>🇮🇶 <b>Iraq</b> 2–1 Bolivia → Group I</span></div>
+    </div>
+  </div>
+  <div class="guide-sec">
+    <div class="guide-hd">🎓 New to Football? Quick Guide</div>
+    <div class="guide-g">
+      <div class="gc"><span class="gc-i">⚽</span><div class="gc-t">Group Stage</div><div class="gc-d">48 teams, 12 groups of 4. Top 2 per group + 8 best 3rd advance.</div></div>
+      <div class="gc"><span class="gc-i">⚔</span><div class="gc-t">Knockout Rounds</div><div class="gc-d">Lose and go home. Win and advance. Ties → extra time → penalties.</div></div>
+      <div class="gc"><span class="gc-i">☠</span><div class="gc-t">Group of Death</div><div class="gc-d">Group I: France, Senegal, Norway, Iraq — multiple world-class teams.</div></div>
+      <div class="gc"><span class="gc-i">🏆</span><div class="gc-t">Deciders</div><div class="gc-d">Matchday 3 games kick off simultaneously — no team can play safe.</div></div>
+      <div class="gc"><span class="gc-i">🕐</span><div class="gc-t">IST vs GCC</div><div class="gc-d">India (IST) is 1h 30min ahead of UAE/Gulf (GCC). Toggle at top.</div></div>
+      <div class="gc"><span class="gc-i">👁</span><div class="gc-t">Match Details</div><div class="gc-d">Tap any match card to see why it matters + star players to watch.</div></div>
+    </div>
+  </div>
+  <div class="sec-title" style="font-size:24px;margin-bottom:8px">🕐 IST / GCC Reference</div>
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:20px">
+    <div style="display:grid;grid-template-columns:1fr auto auto;padding:9px 16px;background:rgba(0,230,118,0.07);border-bottom:1px solid var(--border);font-size:10px;letter-spacing:2px;color:var(--green);font-weight:700;text-transform:uppercase;gap:12px"><span>City</span><span>UTC</span><span>From IST</span></div>
+    <div id="tzTbl"></div>
+  </div>
+  <div class="sec-title" style="font-size:24px;margin-bottom:8px">⚽ All 48 Teams</div>
+  <div id="allTeams"></div>
+</div></div>
+<div id="tab-bydate" class="tab"><div class="section">
+  <div class="sec-title">Fixtures <span class="sec-a">By Date</span></div>
+  <div class="sec-sub">All 72 group stage matches · Chronological · Tap any card for details</div>
+  <div class="gtabs" id="dateFilters"></div>
+  <div id="byDateContent"></div>
+</div></div>
+<div id="tab-groups" class="tab"><div class="section">
+  <div class="sec-title">Group <span class="sec-a">Stage</span></div>
+  <div class="sec-sub">Jun 12 – Jun 28, 2026 · 12 Groups · 72 Matches · Tap cards for details</div>
+  <div class="gtabs" id="groupTabs"></div>
+  <div id="groupPanels"></div>
+</div></div>
+<div id="tab-knockout" class="tab"><div class="section">
+  <div class="sec-title">Knockout <span class="sec-a">Stage</span></div>
+  <div class="sec-sub">Jun 29 – Jul 19, 2026 · Road to the Final</div>
+  <div class="gtabs" id="koTabs"></div>
+  <div id="koPanels"></div>
+  <div class="final-card">
+    <div class="final-card-l">MetLife Stadium · East Rutherford, New Jersey</div>
+    <div class="final-card-t">🏆 THE FINAL</div>
+    <div class="final-card-m">July 19, 2026 &nbsp;·&nbsp; Match #104</div>
+  </div>
+</div></div>
+<div id="tab-quickref" class="tab"><div class="section">
+  <div class="sec-title">Key <span class="sec-a">Matches</span></div>
+  <div class="sec-sub">Must-watch fixtures & tournament milestones</div>
+  <div class="qr-list" id="qrList"></div>
+</div></div>
+<div id="tab-venues" class="tab"><div class="section">
+  <div class="sec-title">Host <span class="sec-a">Stadiums</span></div>
+  <div class="sec-sub">16 World-Class Venues across USA · Canada · Mexico</div>
+  <div class="vgrid" id="venueGrid"></div>
+</div></div>
+<div id="tab-search" class="tab"><div class="section">
+  <div class="sec-title">🔍 <span class="sec-a">Search</span></div>
+  <div class="sec-sub">Find any team's fixtures instantly — tap a result for full details</div>
+  <div class="si-wrap"><span class="si-ico">🔍</span><input class="si" id="si" type="text" placeholder="Type a team name — e.g. Brazil, Argentina, England…" oninput="doSearch(this.value)" autocomplete="off" spellcheck="false"></div>
+  <div class="si-count" id="si-count"></div>
+  <div id="si-results"></div>
+</div></div>
+<div id="tab-myteam" class="tab"><div class="section">
+  <div class="sec-title">⭐ My <span class="sec-a">Team</span></div>
+  <div class="sec-sub">Pick your team — see every fixture + tap for match details</div>
+  <div id="myTeamContent"></div>
+</div></div>
+<div id="tab-facts" class="tab"><div class="section">
+  <div class="sec-title">📚 FIFA <span class="sec-a">Facts</span></div>
+  <div class="sec-sub">Fascinating World Cup 2026 trivia</div>
+  <div class="fact-card" id="factCard" data-num="01"></div>
+  <div class="fdots" id="factDots"></div>
+  <div style="display:flex;gap:8px;justify-content:center;margin-bottom:24px">
+    <button class="fbtn2" onclick="prevFact()">← Prev</button>
+    <button class="fbtn2" onclick="nextFact()">Next →</button>
+  </div>
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--muted);margin-bottom:12px">ALL FACTS</div>
+  <div class="facts-grid" id="allFacts"></div>
+</div></div>
+<div style="height:60px"></div>
+<script>
+/* ══════════ STATE ══════════ */
+var currentTZ=localStorage.getItem('wc26tz')||'IST';
+var favTeam=null;try{favTeam=JSON.parse(localStorage.getItem('wc26fav')||'null');}catch(e){}
+var factIdx=0,factTimer=null;
+
+/* ══════════ TZ TABLE ══════════ */
+var TZ_TABLE=[
+  ["New York / Miami","UTC-4 (EDT)","+ 9h 30m"],
+  ["Houston / Dallas","UTC-5 (CDT)","+ 10h 30m"],
+  ["Los Angeles","UTC-7 (PDT)","+ 12h 30m"],
+  ["Mexico City","UTC-6 (CST)","+ 11h 30m"],
+  ["Vancouver","UTC-7 (PDT)","+ 12h 30m"],
+  ["Toronto","UTC-4 (EDT)","+ 9h 30m"],
+  ["India (IST)","UTC +5:30","BASE"],
+  ["UAE / GCC","UTC +4:00","− 1h 30m"]
+];
+
+/* ══════════ MATCH BADGES ══════════ */
+var MB={1:['opening'],6:['rivalry'],22:['rivalry'],64:['rivalry'],17:['god'],18:['god'],42:['god'],43:['god'],61:['god'],62:['god']};
+
+/* ══════════ HEROES ══════════ */
+var H={
+1:[{f:"🇲🇽",n:"Hirving Lozano",p:"FWD",d:"Chucky — Mexico's explosive winger. Pace and big-game goals at two World Cups."},{f:"🇲🇽",n:"Alexis Vega",p:"MID",d:"Creative spark and set-piece expert. Mexico's most intelligent attacker."},{f:"🇿🇦",n:"Percy Tau",p:"FWD",d:"SA captain, ex-Brighton. Technical, tricky and their biggest attacking threat."},{f:"🇿🇦",n:"Evidence Makgopa",p:"FWD",d:"Clinical finisher. Physical and direct — can score against anyone."}],
+2:[{f:"🇰🇷",n:"Son Heung-min",p:"FWD",d:"Korea's greatest ever. Lightning quick, brilliant left foot — genuinely world class."},{f:"🇰🇷",n:"Lee Kang-in",p:"MID",d:"PSG's creative young star — Korea's next generational talent."},{f:"🇨🇿",n:"Patrik Schick",p:"FWD",d:"Scored a 50-yard lob at Euro 2020. Powerful and technically brilliant striker."},{f:"🇨🇿",n:"Tomáš Souček",p:"MID",d:"West Ham's commanding box-to-box midfielder. Scores big goals."}],
+3:[{f:"🇨🇦",n:"Alphonso Davies",p:"DEF/FWD",d:"Bayern Munich wing-back — possibly the fastest player at the tournament."},{f:"🇨🇦",n:"Jonathan David",p:"FWD",d:"Lille's prolific striker — one of Europe's most consistent scorers."},{f:"🇧🇦",n:"Edin Džeko",p:"FWD",d:"Bosnia's legend. Played for Man City, Roma, Inter — still leads brilliantly."},{f:"🇧🇦",n:"Haris Seferović",p:"FWD",d:"Scored the play-off goals that put Bosnia here. Natural finisher."}],
+4:[{f:"🇺🇸",n:"Christian Pulisic",p:"MID/FWD",d:"AC Milan's star. USA's best — on home soil this is his defining moment."},{f:"🇺🇸",n:"Gio Reyna",p:"MID",d:"Dortmund's creative midfielder. On his day one of the most gifted Americans ever."},{f:"🇵🇾",n:"Miguel Almirón",p:"MID",d:"Newcastle's relentless engine. Presses hard and scores spectacular goals."},{f:"🇵🇾",n:"Julio Enciso",p:"FWD",d:"Brighton's brilliant young Paraguayan — tricky and scores spectacular goals."}],
+5:[{f:"🇶🇦",n:"Akram Afif",p:"FWD",d:"Qatar's star — African Player of the Year. Fast, tricky, world-class."},{f:"🇶🇦",n:"Almoez Ali",p:"FWD",d:"Qatar's all-time top scorer. Clinical inside the box."},{f:"🇨🇭",n:"Granit Xhaka",p:"MID",d:"Won the Bundesliga unbeaten with Leverkusen. Composed, powerful passer."},{f:"🇨🇭",n:"Breel Embolo",p:"FWD",d:"Monaco's powerful Swiss striker. Physical, combative and scores important goals."}],
+6:[{f:"🇧🇷",n:"Vinicius Jr.",p:"FWD",d:"Possibly the world's best player. Unstoppable running at defenders."},{f:"🇧🇷",n:"Rodrygo",p:"FWD",d:"Real Madrid partner to Vini. Champions League pedigree — scores in big games."},{f:"🇲🇦",n:"Achraf Hakimi",p:"DEF",d:"PSG's flying right-back. African defender of the year — attacks like a winger."},{f:"🇲🇦",n:"Hakim Ziyech",p:"MID",d:"Morocco's magician. Creative, unpredictable — capable of a wonder goal."}],
+7:[{f:"🇭🇹",n:"Frantzdy Pierrot",p:"FWD",d:"Haiti's most dangerous attacker. Physical, direct and can score big goals."},{f:"🇭🇹",n:"Duckens Nazon",p:"FWD",d:"Experienced forward with European pedigree. Tricky on the ball."},{f:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",n:"Scott McTominay",p:"MID",d:"Napoli's Scotland warrior. Scores crucial goals and brings huge energy."},{f:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",n:"John McGinn",p:"MID",d:"Aston Villa's tireless captain. Emotional heartbeat of Scotland."}],
+8:[{f:"🇦🇺",n:"Martin Boyle",p:"FWD",d:"Australia's electric winger. Pace and directness trouble any defence."},{f:"🇦🇺",n:"Ajdin Hrustic",p:"MID",d:"Australia's technical midfield heart. Composed and creative."},{f:"🇹🇷",n:"Arda Güler",p:"MID",d:"Real Madrid's Turkish teen sensation. Already scoring stunning CL goals."},{f:"🇹🇷",n:"Hakan Çalhanoğlu",p:"MID",d:"Inter Milan's metronome. Best deep-lying playmaker in Serie A."}],
+9:[{f:"🇩🇪",n:"Florian Wirtz",p:"MID",d:"Leverkusen's magician. Germany's most gifted player — direct, creative, deadly."},{f:"🇩🇪",n:"Jamal Musiala",p:"MID",d:"Bayern's wonder kid. Mesmerising in tight spaces — Germany's future and present."},{f:"🇨🇼",n:"Leandro Bacuna",p:"MID",d:"Curaçao's experienced midfielder with Championship-level quality."},{f:"🇨🇼",n:"Cuco Martina",p:"DEF",d:"Veteran defender — organises Curaçao's backline with European experience."}],
+10:[{f:"🇨🇮",n:"Sébastien Haller",p:"FWD",d:"Overcame cancer to return to elite football. Inspirational and clinical."},{f:"🇨🇮",n:"Nicolas Pépé",p:"FWD",d:"Explosive winger from PL/Arsenal days. Direct, fast, capable of brilliance."},{f:"🇪🇨",n:"Moisés Caicedo",p:"MID",d:"Chelsea's £115m midfielder. One of the best young midfielders in the world."},{f:"🇪🇨",n:"Enner Valencia",p:"FWD",d:"Ecuador's captain. Scored 3 times at the 2014 WC — all-time leading scorer."}],
+11:[{f:"🇳🇱",n:"Virgil van Dijk",p:"DEF",d:"Liverpool's titan — one of the greatest defenders of his generation."},{f:"🇳🇱",n:"Memphis Depay",p:"FWD",d:"Atlético Madrid veteran. Physical, direct, dangerous from wide."},{f:"🇯🇵",n:"Takefusa Kubo",p:"FWD",d:"Real Sociedad's gem. Japan's most creative attacker — brilliant feet."},{f:"🇯🇵",n:"Ritsu Doan",p:"MID",d:"Freiburg's dynamo. Scored in Japan's famous 2022 comeback vs Germany."}],
+12:[{f:"🇸🇪",n:"Viktor Gyökeres",p:"FWD",d:"Sporting CP sensation. 100+ goals in 2 seasons — could top-score here."},{f:"🇸🇪",n:"Dejan Kulusevski",p:"MID/FWD",d:"Tottenham's dynamic attacker. Energetic, direct and scores from midfield."},{f:"🇹🇳",n:"Wahbi Khazri",p:"MID",d:"Tunisia's experienced captain. Their biggest goal threat and creative force."},{f:"🇹🇳",n:"Youssef Msakni",p:"FWD",d:"Tricky Tunisian winger. Quick feet and capable of magic on any given day."}],
+13:[{f:"🇧🇪",n:"Kevin De Bruyne",p:"MID",d:"Man City's genius. Arguably the greatest midfielder of his era."},{f:"🇧🇪",n:"Romelu Lukaku",p:"FWD",d:"Belgium's all-time top scorer. Devastating physical target man."},{f:"🇪🇬",n:"Mohamed Salah",p:"FWD",d:"Liverpool legend. Arguably Africa's greatest ever player."},{f:"🇪🇬",n:"Omar Marmoush",p:"FWD",d:"Frankfurt's sensational 2024-25 striker — 30+ goals. Salah's perfect partner."}],
+14:[{f:"🇮🇷",n:"Mehdi Taremi",p:"FWD",d:"Inter Milan striker. Scored a stunning bicycle kick in the Champions League."},{f:"🇮🇷",n:"Sardar Azmoun",p:"FWD",d:"Leverkusen's intelligent forward. Brilliant hold-up play and eye for goal."},{f:"🇳🇿",n:"Chris Wood",p:"FWD",d:"Nottingham Forest's PL striker. Powerful and capable of a shock goal."},{f:"🇳🇿",n:"Liberato Cacace",p:"DEF",d:"Attacking left-back playing in Europe. Constant overlapping threat."}],
+15:[{f:"🇪🇸",n:"Pedri",p:"MID",d:"Barcelona's masterclass. Only 23, already one of the world's finest midfielders."},{f:"🇪🇸",n:"Lamine Yamal",p:"FWD",d:"18 years old. Euro 2024 winner. Already considered football's next superstar."},{f:"🇨🇻",n:"Garry Rodrigues",p:"FWD",d:"Cape Verde's most dangerous player. Quick, tricky and a set-piece threat."},{f:"🇨🇻",n:"Ryan Mendes",p:"MID",d:"Experienced captain. Skilled, quick and their best attacking midfielder."}],
+16:[{f:"🇸🇦",n:"Salem Al-Dawsari",p:"FWD",d:"Scored THAT goal vs Messi's Argentina in 2022. Saudi's iconic attacker."},{f:"🇸🇦",n:"Firas Al-Buraikan",p:"FWD",d:"Saudi's clinical young striker. Fast, direct and lethal in the box."},{f:"🇺🇾",n:"Darwin Núñez",p:"FWD",d:"Liverpool's powerful striker. Explosive and dangerous in big moments."},{f:"🇺🇾",n:"Federico Valverde",p:"MID",d:"Real Madrid's box-to-box dynamo. Most complete midfielder at this tournament."}],
+17:[{f:"🇫🇷",n:"Kylian Mbappé",p:"FWD",d:"Real Madrid's superstar. Fastest, most clinical forward on the planet."},{f:"🇫🇷",n:"Antoine Griezmann",p:"FWD",d:"2018 WC hero. Creative, clinical and scores in the biggest moments."},{f:"🇸🇳",n:"Sadio Mané",p:"FWD",d:"Africa's greatest modern player. Liverpool legend, multiple-time POTY."},{f:"🇸🇳",n:"Ismaïla Sarr",p:"FWD",d:"Crystal Palace's electric winger. Explosive pace and direct threat."}],
+18:[{f:"🇮🇶",n:"Amjad Attwan",p:"MID",d:"Iraq's tireless captain. Creative, energetic — the engine behind their qualification."},{f:"🇮🇶",n:"Mohanad Ali",p:"FWD",d:"Iraq's top scorer. Composed finisher who can punish any defence."},{f:"🇳🇴",n:"Erling Haaland",p:"FWD",d:"Man City's machine. 50+ goals a season — making his debut on football's biggest stage."},{f:"🇳🇴",n:"Martin Ødegaard",p:"MID",d:"Arsenal's creative captain. Elegant, intelligent — the perfect Haaland supply line."}],
+19:[{f:"🇦🇷",n:"Lionel Messi",p:"FWD",d:"The greatest of all time. Defending champion — every touch is historic at 38."},{f:"🇦🇷",n:"Julián Álvarez",p:"FWD",d:"Scored twice in the 2022 WC Final. Argentina's second superstar."},{f:"🇩🇿",n:"Riyad Mahrez",p:"FWD",d:"Algeria's talisman. PL champion with Man City — creative and world-class."},{f:"🇩🇿",n:"Youcef Atal",p:"DEF",d:"Nice's dynamic right-back. Adventurous, pacy and dangerous going forward."}],
+20:[{f:"🇦🇹",n:"David Alaba",p:"DEF",d:"Real Madrid's sweeper-libero. Austria's captain and defensive cornerstone."},{f:"🇦🇹",n:"Marcel Sabitzer",p:"MID",d:"Man United's box-to-box midfielder. Tough, energetic, scores big goals."},{f:"🇯🇴",n:"Musa Al-Taamari",p:"FWD",d:"Jordan's star who plays in Europe. Quick, direct and their biggest threat."},{f:"🇯🇴",n:"Yazan Al-Naimat",p:"MID",d:"Jordan's creative midfielder — organiser behind their historic qualification."}],
+21:[{f:"🇵🇹",n:"Cristiano Ronaldo",p:"FWD",d:"Football's all-time top scorer at 41. Possibly his last World Cup — every goal is historic."},{f:"🇵🇹",n:"Bruno Fernandes",p:"MID",d:"Man United's captain. Creative playmaker — Portugal's engine and set-piece master."},{f:"🇨🇩",n:"Cédric Bakambu",p:"FWD",d:"DR Congo's experienced striker with Champions League history."},{f:"🇨🇩",n:"Yannick Bolasie",p:"FWD",d:"Veteran winger with years of Premier League experience. Tricky and direct."}],
+22:[{f:"🇺🇿",n:"Eldor Shomurodov",p:"FWD",d:"Roma's Uzbek striker. Physical, mobile — a genuine goal threat in Serie A."},{f:"🇺🇿",n:"Javokhir Sidiqov",p:"MID",d:"Uzbekistan's creative force. One of Asian football's most exciting talents."},{f:"🇨🇴",n:"Luis Díaz",p:"FWD",d:"Liverpool's electric winger. Direct, explosive and scores stunning goals."},{f:"🇨🇴",n:"James Rodríguez",p:"MID",d:"2014 Golden Boot winner. Still elegant, still capable of pure genius."}],
+23:[{f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"Jude Bellingham",p:"MID",d:"Real Madrid's superstar. Most complete midfielder of his generation at 21."},{f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"Bukayo Saka",p:"FWD",d:"Arsenal's brilliant right winger. Consistent, composed and deadly."},{f:"🇭🇷",n:"Luka Modrić",p:"MID",d:"2018 WC winner, Ballon d'Or holder at 40. Technically peerless."},{f:"🇭🇷",n:"Ivan Perišić",p:"MID/FWD",d:"Scored in the 2018 Final. Dangerous from set pieces and in the air."}],
+24:[{f:"🇬🇭",n:"Mohammed Kudus",p:"MID/FWD",d:"West Ham's dynamic Ghanaian. Full of energy, skill and spectacular goals."},{f:"🇬🇭",n:"Jordan Ayew",p:"FWD",d:"Ghana's experienced captain. Leadership and composure in big moments."},{f:"🇵🇦",n:"Ismael Díaz",p:"FWD",d:"Panama's most dangerous player. Quick, unpredictable and tricky."},{f:"🇵🇦",n:"Adalberto Carrasquilla",p:"MID",d:"Panama's midfield talisman. Scored the qualifier — tireless energy."}],
+25:[{f:"🇨🇿",n:"Patrik Schick",p:"FWD",d:"Powerful striker who shocked the world with a 50-yard lob at Euro 2020."},{f:"🇨🇿",n:"Tomáš Souček",p:"MID",d:"West Ham's dominant midfielder. Scores headers and wins every aerial duel."},{f:"🇿🇦",n:"Percy Tau",p:"FWD",d:"South Africa's European-experienced captain. Main creative and goal threat."},{f:"🇿🇦",n:"Evidence Makgopa",p:"FWD",d:"Young striker with a nose for goal. Physical and direct."}],
+26:[{f:"🇲🇽",n:"Hirving Lozano",p:"FWD",d:"Mexico's pace merchant. Has scored at World Cups before — torments defenders."},{f:"🇲🇽",n:"Alexis Vega",p:"MID",d:"El Tri's creative midfielder. Makes intelligent runs and scores big goals."},{f:"🇰🇷",n:"Son Heung-min",p:"FWD",d:"Spurs captain and Korea's icon. Always rises to the occasion in must-win games."},{f:"🇰🇷",n:"Lee Kang-in",p:"MID",d:"PSG's young talent. Technical, quick and already at the highest level."}],
+27:[{f:"🇨🇭",n:"Granit Xhaka",p:"MID",d:"Unbeaten Bundesliga champion. Leads Switzerland with authority and vision."},{f:"🇨🇭",n:"Breel Embolo",p:"FWD",d:"Monaco's powerful striker. Physical, combative — scores important goals."},{f:"🇧🇦",n:"Edin Džeko",p:"FWD",d:"Bosnia's all-time legend. Played at Man City, Roma, Inter — class always shows."},{f:"🇧🇦",n:"Haris Seferović",p:"FWD",d:"The play-off hero. Scored the goals that brought Bosnia here."}],
+28:[{f:"🇨🇦",n:"Jonathan David",p:"FWD",d:"Lille's prolific striker — one of Europe's most consistent goal scorers."},{f:"🇨🇦",n:"Alphonso Davies",p:"DEF/FWD",d:"The fastest player at the tournament. Can go from defender to scorer in seconds."},{f:"🇶🇦",n:"Akram Afif",p:"FWD",d:"Qatar's African POTY. Fast, tricky and their only genuine world-class player."},{f:"🇶🇦",n:"Almoez Ali",p:"FWD",d:"Qatar's all-time top scorer. Still the main threat in front of goal."}],
+29:[{f:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",n:"Scott McTominay",p:"MID",d:"Napoli's Scottish warrior. Scores crucial goals and fights for every ball."},{f:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",n:"John McGinn",p:"MID",d:"Aston Villa's combative captain. Scotland need his energy to compete."},{f:"🇲🇦",n:"Hakim Ziyech",p:"MID",d:"Morocco's creative genius who helped reach the 2022 semi-finals."},{f:"🇲🇦",n:"Achraf Hakimi",p:"DEF",d:"PSG's flying right-back. A constant attacking threat and Africa's finest."}],
+30:[{f:"🇧🇷",n:"Vinicius Jr.",p:"FWD",d:"Brazil's unstoppable left winger. Expected to dominate every attacking move."},{f:"🇧🇷",n:"Rodrygo",p:"FWD",d:"Brazil's second superstar. Champions League pedigree — scores in big moments."},{f:"🇭🇹",n:"Frantzdy Pierrot",p:"FWD",d:"Haiti's danger man. Physical, direct and capable of an upset-winning goal."},{f:"🇭🇹",n:"Duckens Nazon",p:"FWD",d:"Experienced forward with European pedigree. Committed on every run."}],
+31:[{f:"🇺🇸",n:"Christian Pulisic",p:"MID/FWD",d:"USA's captain and AC Milan star. On home soil this is his defining moment."},{f:"🇺🇸",n:"Gio Reyna",p:"MID",d:"Dortmund's creative talent. On his day one of the most gifted Americans ever."},{f:"🇦🇺",n:"Martin Boyle",p:"FWD",d:"Australia's most dangerous wide attacker. Pace and trickery trouble any backline."},{f:"🇦🇺",n:"Ajdin Hrustic",p:"MID",d:"The technical heart of Australia's midfield. Composed under pressure."}],
+32:[{f:"🇹🇷",n:"Arda Güler",p:"MID",d:"Real Madrid's Turkish gem. Sensational talent who scores breathtaking goals."},{f:"🇹🇷",n:"Hakan Çalhanoğlu",p:"MID",d:"Inter's commanding midfielder. Superb passing and long-range shooting threat."},{f:"🇵🇾",n:"Miguel Almirón",p:"MID",d:"Newcastle's relentless midfielder. Presses relentlessly and scores spectacular goals."},{f:"🇵🇾",n:"Julio Enciso",p:"FWD",d:"Brighton's brilliant young Paraguayan. Tricky and capable of wonder goals."}],
+33:[{f:"🇩🇪",n:"Jamal Musiala",p:"MID",d:"Bayern's 21-year-old sensation. Nimble, quick and brilliant in small spaces."},{f:"🇩🇪",n:"Florian Wirtz",p:"MID",d:"Germany's most gifted player in years. Direct, creative and technically stunning."},{f:"🇨🇮",n:"Sébastien Haller",p:"FWD",d:"The inspiration — overcame cancer to score at this level. Clinical and composed."},{f:"🇨🇮",n:"Nicolas Pépé",p:"FWD",d:"Explosive winger. Direct, powerful and capable of stunning individual moments."}],
+34:[{f:"🇪🇨",n:"Moisés Caicedo",p:"MID",d:"Chelsea's £115m dominant midfielder — expected to control this completely."},{f:"🇪🇨",n:"Enner Valencia",p:"FWD",d:"Ecuador's captain and all-time scorer. Experienced leader who scores big."},{f:"🇨🇼",n:"Leandro Bacuna",p:"MID",d:"Curaçao's experienced midfielder. Composed and an important creative outlet."},{f:"🇨🇼",n:"Cuco Martina",p:"DEF",d:"Veteran defender with Championship experience. Organises the backline."}],
+35:[{f:"🇳🇱",n:"Virgil van Dijk",p:"DEF",d:"Liverpool's immovable centre-back. Commanding, powerful and a leader."},{f:"🇳🇱",n:"Memphis Depay",p:"FWD",d:"Atlético's experienced forward. Physical, direct and scored World Cup goals."},{f:"🇸🇪",n:"Viktor Gyökeres",p:"FWD",d:"Sporting's phenomenon — 100+ goals in 2 seasons. Sweden's unstoppable weapon."},{f:"🇸🇪",n:"Dejan Kulusevski",p:"MID/FWD",d:"Tottenham's dynamic attacker. Energetic, direct and scores from midfield."}],
+36:[{f:"🇹🇳",n:"Wahbi Khazri",p:"MID",d:"Tunisia's captain and most experienced player. Main creative and goal threat."},{f:"🇹🇳",n:"Youssef Msakni",p:"FWD",d:"Tricky Tunisian forward. Quick feet and capable of turning games."},{f:"🇯🇵",n:"Takefusa Kubo",p:"FWD",d:"Real Sociedad's brilliant star. Japan's most creative and clinical attacker."},{f:"🇯🇵",n:"Ritsu Doan",p:"MID",d:"The 2022 Germany-killer. Big-game player who scores vital goals."}],
+37:[{f:"🇪🇸",n:"Pedri",p:"MID",d:"Spain's midfield maestro. Technically impeccable — Spain's creative soul."},{f:"🇪🇸",n:"Lamine Yamal",p:"FWD",d:"18yo phenomenon. Already looks like the best player in the world on his day."},{f:"🇸🇦",n:"Salem Al-Dawsari",p:"FWD",d:"Al-Hilal's winger who scored vs Messi in 2022. Saudi's iconic match-winner."},{f:"🇸🇦",n:"Firas Al-Buraikan",p:"FWD",d:"Young Saudi striker. Fast, direct and lethal with an eye for goal."}],
+38:[{f:"🇺🇾",n:"Darwin Núñez",p:"FWD",d:"Liverpool's powerful striker. Raw, explosive — dangerous in crucial moments."},{f:"🇺🇾",n:"Federico Valverde",p:"MID",d:"Real Madrid's box-to-box dynamo. Most complete midfielder at the tournament."},{f:"🇨🇻",n:"Garry Rodrigues",p:"FWD",d:"Cape Verde's best player. Quick, direct and a real set-piece threat."},{f:"🇨🇻",n:"Ryan Mendes",p:"MID",d:"Experienced captain. Creative and composed — their midfield fulcrum."}],
+39:[{f:"🇧🇪",n:"Kevin De Bruyne",p:"MID",d:"Man City's genius playmaker. Belgium's last great generation — possibly best ever midfielder."},{f:"🇧🇪",n:"Romelu Lukaku",p:"FWD",d:"Belgium's all-time top scorer. Loves big matches and scores when it counts."},{f:"🇮🇷",n:"Mehdi Taremi",p:"FWD",d:"Inter Milan's technical striker. Champions League scorer — Iran's biggest weapon."},{f:"🇮🇷",n:"Sardar Azmoun",p:"FWD",d:"Leverkusen's thoughtful forward. Intelligent movement and an eye for goal."}],
+40:[{f:"🇳🇿",n:"Chris Wood",p:"FWD",d:"Nottingham Forest's PL striker. Experienced and capable of shock goals."},{f:"🇳🇿",n:"Liberato Cacace",p:"DEF",d:"Left-back playing in Europe. Constantly overlaps and delivers dangerous crosses."},{f:"🇪🇬",n:"Mohamed Salah",p:"FWD",d:"Liverpool's legend. Still arguably top-5 in the world — beautiful to watch."},{f:"🇪🇬",n:"Omar Marmoush",p:"FWD",d:"Frankfurt's outstanding 2024-25 season striker. Perfect Salah partner."}],
+41:[{f:"🇫🇷",n:"Kylian Mbappé",p:"FWD",d:"France's superstar. Fastest player in football — Iraq must defend deep."},{f:"🇫🇷",n:"Antoine Griezmann",p:"FWD",d:"France's consistent World Cup performer. Creative and clinical in big moments."},{f:"🇮🇶",n:"Amjad Attwan",p:"MID",d:"Iraq's captain. Tireless, creative — their best chance of staying in the game."},{f:"🇮🇶",n:"Mohanad Ali",p:"FWD",d:"Iraq's top scorer. One moment of quality could shock France."}],
+42:[{f:"🇳🇴",n:"Erling Haaland",p:"FWD",d:"Man City's machine on his WC debut. Against Senegal — his defining first chapter."},{f:"🇳🇴",n:"Martin Ødegaard",p:"MID",d:"Arsenal's captain. Elegant and intelligent — Norway's brain in midfield."},{f:"🇸🇳",n:"Sadio Mané",p:"FWD",d:"Africa's greatest modern player. Two-time POTY — Senegal fight for survival."},{f:"🇸🇳",n:"Ismaïla Sarr",p:"FWD",d:"Crystal Palace's electric winger. Must be clinical here to keep Senegal alive."}],
+43:[{f:"🇦🇷",n:"Lionel Messi",p:"FWD",d:"The greatest of all time. Even a comfortable game produces moments of pure art."},{f:"🇦🇷",n:"Julián Álvarez",p:"FWD",d:"2022 WC hero — scored 4 goals including 2 in the Final. Argentina's No.2 star."},{f:"🇦🇹",n:"Marcel Sabitzer",p:"MID",d:"Man United's energetic midfielder. Scores big goals and battles for every ball."},{f:"🇦🇹",n:"David Alaba",p:"DEF",d:"Real Madrid's sweeper. Austria's captain and their defensive rock."}],
+44:[{f:"🇯🇴",n:"Musa Al-Taamari",p:"FWD",d:"Jordan's best player. Plays in Europe and is quick, direct and capable of upsets."},{f:"🇯🇴",n:"Yazan Al-Naimat",p:"MID",d:"Jordan's creative midfielder who drove their historic qualification."},{f:"🇩🇿",n:"Riyad Mahrez",p:"FWD",d:"Algeria's all-time great. PL champion with Man City — creative and world-class."},{f:"🇩🇿",n:"Youcef Atal",p:"DEF",d:"Nice's dynamic right-back. Adventurous and a constant threat going forward."}],
+45:[{f:"🇵🇹",n:"Cristiano Ronaldo",p:"FWD",d:"At 41 — football's all-time scorer. Likely final chance for flowing WC goals."},{f:"🇵🇹",n:"Bruno Fernandes",p:"MID",d:"Man United's captain. Creative force and set-piece expert — Portugal's engine."},{f:"🇺🇿",n:"Eldor Shomurodov",p:"FWD",d:"Roma's Uzbek striker. Physical and mobile — a goal threat against anyone."},{f:"🇺🇿",n:"Javokhir Sidiqov",p:"MID",d:"Uzbekistan's creative young star. Their best chance against Portugal's class."}],
+46:[{f:"🇨🇴",n:"Luis Díaz",p:"FWD",d:"Liverpool's electric winger. Direct, explosive and scores stunning goals."},{f:"🇨🇴",n:"James Rodríguez",p:"MID",d:"2014 Golden Boot winner. Still magical — capable of brilliance at any moment."},{f:"🇨🇩",n:"Cédric Bakambu",p:"FWD",d:"DR Congo's European-experienced striker. Physical and smart in the box."},{f:"🇨🇩",n:"Yannick Bolasie",p:"FWD",d:"Veteran winger with PL and European experience. Tricky and direct."}],
+47:[{f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"Jude Bellingham",p:"MID",d:"Real Madrid's superstar. Most complete young player in football — scores and creates."},{f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"Bukayo Saka",p:"FWD",d:"Arsenal's brilliant right winger. England's most reliable performer."},{f:"🇬🇭",n:"Mohammed Kudus",p:"MID/FWD",d:"West Ham's dynamic Ghanaian. Full of energy, skill and spectacular goals."},{f:"🇬🇭",n:"Jordan Ayew",p:"FWD",d:"Ghana's experienced captain. Leadership when it matters most."}],
+48:[{f:"🇵🇦",n:"Ismael Díaz",p:"FWD",d:"Panama's attacking spark. Quick, technical and their best offensive threat."},{f:"🇵🇦",n:"Adalberto Carrasquilla",p:"MID",d:"Scored their qualifier. Leads Panama with determination and belief."},{f:"🇭🇷",n:"Luka Modrić",p:"MID",d:"2018 WC winner, Ballon d'Or holder. At 40 — possibly his final group game ever."},{f:"🇭🇷",n:"Ivan Perišić",p:"MID/FWD",d:"Croatia's veteran set-piece expert. Scored in the 2018 Final — experienced."}],
+49:[{f:"🇿🇦",n:"Percy Tau",p:"FWD",d:"South Africa's European-experienced captain. Their best hope of advancing."},{f:"🇿🇦",n:"Evidence Makgopa",p:"FWD",d:"Direct striker. Energy, physicality and goal threat to unsettle any backline."},{f:"🇰🇷",n:"Son Heung-min",p:"FWD",d:"Korea's greatest — will want to end his final WC on a high. Motivated."},{f:"🇰🇷",n:"Lee Kang-in",p:"MID",d:"PSG's technical star. Could decide this game with a moment of brilliance."}],
+50:[{f:"🇨🇿",n:"Patrik Schick",p:"FWD",d:"Czechia's powerhouse striker. Needs a goal — clinical, powerful and aerial danger."},{f:"🇨🇿",n:"Tomáš Souček",p:"MID",d:"West Ham's physical midfielder. A set-piece threat and gives Czechia an edge."},{f:"🇲🇽",n:"Hirving Lozano",p:"FWD",d:"Mexico's electric winger. Desperate to help El Tri advance on home soil."},{f:"🇲🇽",n:"Alexis Vega",p:"MID",d:"Mexico's creative force. Must link midfield and attack to advance."}],
+51:[{f:"🇨🇭",n:"Granit Xhaka",p:"MID",d:"Leverkusen's treble-winning captain. Switzerland's leader in every sense."},{f:"🇨🇭",n:"Breel Embolo",p:"FWD",d:"Monaco's Swiss striker. Physical and direct — Switzerland's attacking focal point."},{f:"🇨🇦",n:"Alphonso Davies",p:"DEF/FWD",d:"Bayern's flying wing-back. Can win this game on his own if he gets space."},{f:"🇨🇦",n:"Jonathan David",p:"FWD",d:"Canada's clinical striker. One of Europe's best over the last 3 seasons."}],
+52:[{f:"🇧🇦",n:"Edin Džeko",p:"FWD",d:"Bosnia's captain. Experienced at the highest level — can still lead the line."},{f:"🇧🇦",n:"Haris Seferović",p:"FWD",d:"The play-off hero. Motivated to prove those goals were no fluke."},{f:"🇶🇦",n:"Akram Afif",p:"FWD",d:"Qatar's African POTY. Their only world-class player — can decide matches alone."},{f:"🇶🇦",n:"Almoez Ali",p:"FWD",d:"Qatar's top scorer in Asian football. Dangerous in the box."}],
+53:[{f:"🇲🇦",n:"Achraf Hakimi",p:"DEF",d:"PSG's brilliant right-back. Morocco's best player — danger every time forward."},{f:"🇲🇦",n:"Hakim Ziyech",p:"MID",d:"Morocco's creative genius. Helped reach 2022 semi-finals almost single-handedly."},{f:"🇭🇹",n:"Frantzdy Pierrot",p:"FWD",d:"Haiti's best player. Physical, direct and capable of a World Cup shock."},{f:"🇭🇹",n:"Duckens Nazon",p:"FWD",d:"Experienced forward with European pedigree. Committed every single run."}],
+54:[{f:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",n:"Scott McTominay",p:"MID",d:"Scotland's warrior. Against Brazil — his goal-scoring ability from midfield is key."},{f:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",n:"John McGinn",p:"MID",d:"Aston Villa's combative captain. Scotland need every ounce of his energy."},{f:"🇧🇷",n:"Vinicius Jr.",p:"FWD",d:"World's most feared attacker right now. Scotland's left flank under siege."},{f:"🇧🇷",n:"Rodrygo",p:"FWD",d:"Brazil's second star. Equally dangerous as Vini — gives Brazil two threats."}],
+55:[{f:"🇨🇼",n:"Leandro Bacuna",p:"MID",d:"Curaçao's experienced midfielder. Creative outlet in tighter group situations."},{f:"🇨🇼",n:"Cuco Martina",p:"DEF",d:"Veteran defender with Championship experience. Experienced leadership."},{f:"🇨🇮",n:"Nicolas Pépé",p:"FWD",d:"Ivory Coast's explosive winger. Direct and capable of a stunning goal."},{f:"🇨🇮",n:"Sébastien Haller",p:"FWD",d:"The inspirational striker who recovered from cancer. Emotional and clinical."}],
+56:[{f:"🇪🇨",n:"Moisés Caicedo",p:"MID",d:"Chelsea's dominant £115m midfielder. Must control midfield in this must-not-lose."},{f:"🇪🇨",n:"Enner Valencia",p:"FWD",d:"Ecuador's captain. Scored 3 goals at 2014 WC — still leads with authority."},{f:"🇩🇪",n:"Florian Wirtz",p:"MID",d:"Germany's most creative player. Must unlock Ecuador's defence to avoid exit."},{f:"🇩🇪",n:"Jamal Musiala",p:"MID",d:"Bayern's brilliant midfielder. Explosive in tight spaces — Germany's best chance."}],
+57:[{f:"🇹🇳",n:"Wahbi Khazri",p:"MID",d:"Tunisia's most experienced player. Leader they rely on for any chance of progress."},{f:"🇹🇳",n:"Youssef Msakni",p:"FWD",d:"Tricky Tunisian winger. Quick feet and Tunisia's best counter-attack hope."},{f:"🇳🇱",n:"Virgil van Dijk",p:"DEF",d:"Liverpool's titan. Netherlands must win and he'll lead the defence authoritatively."},{f:"🇳🇱",n:"Memphis Depay",p:"FWD",d:"Netherlands' veteran goal threat. Physical, direct — must score here."}],
+58:[{f:"🇯🇵",n:"Takefusa Kubo",p:"FWD",d:"Japan's brightest star. Direct, skilful — Japan need him at his brilliant best."},{f:"🇯🇵",n:"Ritsu Doan",p:"MID",d:"The 2022 Germany-killer. Big-game player. Japan fans expect him to deliver again."},{f:"🇸🇪",n:"Viktor Gyökeres",p:"FWD",d:"Sporting's sensation. Sweden throw everything at Japan to get him the ball."},{f:"🇸🇪",n:"Dejan Kulusevski",p:"MID/FWD",d:"Spurs' dynamic attacker. Creates and scores — Sweden's supply line to Gyökeres."}],
+59:[{f:"🇹🇷",n:"Arda Güler",p:"MID",d:"Real Madrid's teenage superstar. Türkiye's greatest talent in years. Huge stage."},{f:"🇹🇷",n:"Hakan Çalhanoğlu",p:"MID",d:"Inter Milan's commanding midfielder. Dictates tempo and shoots from range."},{f:"🇺🇸",n:"Christian Pulisic",p:"MID/FWD",d:"USA's star in front of home crowd. AC Milan player — his defining World Cup game."},{f:"🇺🇸",n:"Gio Reyna",p:"MID",d:"Dortmund's creative midfielder. On his best day can unlock any defence."}],
+60:[{f:"🇵🇾",n:"Julio Enciso",p:"FWD",d:"Brighton's brilliant young attacker. Full of tricks and scores spectacular goals."},{f:"🇵🇾",n:"Miguel Almirón",p:"MID",d:"Newcastle's relentless engine. Paraguay's most consistent performer."},{f:"🇦🇺",n:"Martin Boyle",p:"FWD",d:"Australia's most dangerous wide attacker. Pace and trickery that troubles anyone."},{f:"🇦🇺",n:"Ajdin Hrustic",p:"MID",d:"Technical heart of Australia's midfield. Composed under pressure."}],
+61:[{f:"🇳🇴",n:"Erling Haaland",p:"FWD",d:"Man City's machine vs France. Haaland vs Mbappé — the duel everyone wanted."},{f:"🇳🇴",n:"Martin Ødegaard",p:"MID",d:"Arsenal's captain — Norway need him to supply Haaland against France's best."},{f:"🇫🇷",n:"Kylian Mbappé",p:"FWD",d:"France's superstar. Haaland vs Mbappé is the defining match of Group I."},{f:"🇫🇷",n:"Antoine Griezmann",p:"FWD",d:"France's World Cup hero. Link-up and movement crucial for France to advance."}],
+62:[{f:"🇸🇳",n:"Sadio Mané",p:"FWD",d:"Senegal's inspirational leader. Must win — his World Cup legacy on the line."},{f:"🇸🇳",n:"Ismaïla Sarr",p:"FWD",d:"Crystal Palace's electric winger. Must be clinical to keep Senegal alive."},{f:"🇮🇶",n:"Amjad Attwan",p:"MID",d:"Iraq's captain. Energy and organisation — their only chance against Senegal."},{f:"🇮🇶",n:"Mohanad Ali",p:"FWD",d:"Iraq's top scorer. One moment of quality could qualify Iraq for the knockouts."}],
+63:[{f:"🇨🇻",n:"Garry Rodrigues",p:"FWD",d:"Cape Verde's best player. Their biggest hope of scoring and advancing."},{f:"🇨🇻",n:"Ryan Mendes",p:"MID",d:"Cape Verde's experienced captain. Creative and their midfield fulcrum."},{f:"🇸🇦",n:"Salem Al-Dawsari",p:"FWD",d:"Saudi's iconic winger — scored vs Messi in 2022. Needs to deliver here."},{f:"🇸🇦",n:"Firas Al-Buraikan",p:"FWD",d:"Saudi's clinical young striker. Direct, fast and lethal if given service."}],
+64:[{f:"🇺🇾",n:"Darwin Núñez",p:"FWD",d:"Liverpool's explosive striker. Uruguay vs Spain — South American clash of quality."},{f:"🇺🇾",n:"Federico Valverde",p:"MID",d:"Real Madrid's brilliant all-rounder. Scores wonder goals and outclasses midfields."},{f:"🇪🇸",n:"Pedri",p:"MID",d:"Spain's midfield maestro. Brilliant and composed — Spain's creative foundation."},{f:"🇪🇸",n:"Lamine Yamal",p:"FWD",d:"18yo phenomenon. Possibly the best player at this entire tournament."}],
+65:[{f:"🇳🇿",n:"Chris Wood",p:"FWD",d:"New Zealand's PL striker. Can cause upsets with a physical performance."},{f:"🇳🇿",n:"Liberato Cacace",p:"DEF",d:"European-based left-back. Constantly creates chances going forward."},{f:"🇧🇪",n:"Kevin De Bruyne",p:"MID",d:"Belgium's genius. A WC winner would complete the greatest midfielder's legacy."},{f:"🇧🇪",n:"Romelu Lukaku",p:"FWD",d:"Belgium's all-time top scorer. Physical and clinical — needs goals to carry them."}],
+66:[{f:"🇪🇬",n:"Mohamed Salah",p:"FWD",d:"Liverpool's legendary No.11. Still arguably top-5 in the world — must dominate."},{f:"🇪🇬",n:"Omar Marmoush",p:"FWD",d:"Frankfurt's outstanding 2024-25 striker. Perfect Salah partner."},{f:"🇮🇷",n:"Mehdi Taremi",p:"FWD",d:"Inter's Iranian striker. Bicycle kick in the CL — Iran's biggest match-winner."},{f:"🇮🇷",n:"Sardar Azmoun",p:"FWD",d:"Leverkusen's thoughtful forward. Intelligent movement and goal threat."}],
+67:[{f:"🇵🇦",n:"Ismael Díaz",p:"FWD",d:"Panama's attacking spark. Quick, unpredictable and motivated for an upset."},{f:"🇵🇦",n:"Adalberto Carrasquilla",p:"MID",d:"The qualifier scorer. Tireless energy and belief — could cause complacent England."},{f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"Jude Bellingham",p:"MID",d:"England's Real Madrid superstar. Expects to dominate and win comfortably."},{f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"Bukayo Saka",p:"FWD",d:"Arsenal's brilliant attacker. England's most reliable and composed match-winner."}],
+68:[{f:"🇭🇷",n:"Luka Modrić",p:"MID",d:"Croatia's living legend. 2018 WC winner at 40 — possibly his last match ever here."},{f:"🇭🇷",n:"Ivan Perišić",p:"MID/FWD",d:"Croatia's veteran. Dangerous from crosses, headers and set pieces."},{f:"🇬🇭",n:"Mohammed Kudus",p:"MID/FWD",d:"West Ham's brilliant Ghanaian. Can produce a moment to take Ghana through."},{f:"🇬🇭",n:"Jordan Ayew",p:"FWD",d:"Ghana's captain. Experienced, composed and provides leadership."}],
+69:[{f:"🇨🇴",n:"Luis Díaz",p:"FWD",d:"Liverpool's electric winger. Colombia's best player — direct, pacy and lethal."},{f:"🇨🇴",n:"James Rodríguez",p:"MID",d:"2014 Golden Boot winner. Still capable of magic — watch his set pieces."},{f:"🇵🇹",n:"Cristiano Ronaldo",p:"FWD",d:"At 41 — desperate to score. Portugal need a result. This may be his last match."},{f:"🇵🇹",n:"Bruno Fernandes",p:"MID",d:"Man United's captain. Creative force — Portugal's main playmaker when it counts."}],
+70:[{f:"🇨🇩",n:"Cédric Bakambu",p:"FWD",d:"DR Congo's most experienced attacker. Champions League history — physical."},{f:"🇨🇩",n:"Yannick Bolasie",p:"FWD",d:"Veteran winger with Premier League and European experience."},{f:"🇺🇿",n:"Eldor Shomurodov",p:"FWD",d:"Roma's Uzbek striker. Physical, mobile — keeps Uzbekistan's hopes alive."},{f:"🇺🇿",n:"Javokhir Sidiqov",p:"MID",d:"Uzbekistan's creative star. Their best hope of creating and keeping possession."}],
+71:[{f:"🇩🇿",n:"Riyad Mahrez",p:"FWD",d:"Algeria's legendary winger. PL champion — needs a big game to advance."},{f:"🇩🇿",n:"Youcef Atal",p:"DEF",d:"Attacking right-back. Constantly creates chances and is a real decider asset."},{f:"🇦🇹",n:"Marcel Sabitzer",p:"MID",d:"Man United's energetic midfielder. Scores goals from range — crucial for Austria."},{f:"🇦🇹",n:"David Alaba",p:"DEF",d:"Real Madrid's sweeper. Austria's captain — his leadership in the decider is everything."}],
+72:[{f:"🇯🇴",n:"Musa Al-Taamari",p:"FWD",d:"Jordan's best player. Fast, direct and capable of the shock of the tournament."},{f:"🇯🇴",n:"Yazan Al-Naimat",p:"MID",d:"Jordan's creative midfielder. Their organisation is everything if they want an upset."},{f:"🇦🇷",n:"Lionel Messi",p:"FWD",d:"The greatest of all time. Defending champion. Every touch may be his last."},{f:"🇦🇷",n:"Julián Álvarez",p:"FWD",d:"2022 WC hero, scored 4 including 2 in the Final. Argentina's second superstar."}]
+};
+
+/* ══════════ MATCH INFO — storyline + rating for all 72 matches ══════════
+   r: M=Must Watch  R=Recommended  O=Optional
+   s: why this match matters    t: beginner tip  */
+var MI={
+1:{r:'M',s:"The 2026 WC opens at iconic Azteca! Mexico on home soil — electric atmosphere guaranteed.",t:"Watch the opening ceremony. The biggest event on Earth begins here."},
+2:{r:'R',s:"Son Heung-min (Korea's greatest) vs Czechia's Schick who scored a stunning 50-yard lob at Euro 2020.",t:"Son is Premier League world-class. Watch every single touch he makes."},
+3:{r:'R',s:"Host Canada's WC debut on home soil. Alphonso Davies — fastest player at the tournament — leads the charge.",t:"Canada are playing for a nation's dream. Davies alone can change any game."},
+4:{r:'M',s:"USA on home soil. Pulisic (AC Milan) has a packed American crowd behind him. This is his defining moment.",t:"American football culture has transformed. Feel the enormous home-crowd energy."},
+5:{r:'O',s:"Qatar (hosted 2022, lost all 3 games) vs Switzerland's treble-winner Granit Xhaka. Gulf football vs Europe.",t:"Watch Xhaka — he just won the Bundesliga unbeaten with Leverkusen."},
+6:{r:'M',s:"2022 QF REMATCH: Vinicius Jr. (world's best?) vs Morocco's Hakimi and Ziyech. South America vs Africa at peak.",t:"Brazil vs Morocco in 2022 was beautiful football. This will be even better."},
+7:{r:'O',s:"Caribbean underdogs Haiti vs Scotland — two passionate teams just happy to be competing at the World Cup.",t:"Pure passion. No pressure. Perfect introduction to international football."},
+8:{r:'R',s:"Arda Güler — Real Madrid's 19-year-old Turkish prodigy who scored stunning CL goals — makes his WC debut.",t:"Arda Güler is the next big thing in football. Watch him from minute one."},
+9:{r:'R',s:"Germany's redemption: they crashed out of the groups in 2018 AND 2022. Wirtz + Musiala must deliver.",t:"Germany have been shocking at the last 2 World Cups. Will the giants finally wake?"},
+10:{r:'R',s:"Ivory Coast's Haller (overcame cancer to return) vs Ecuador's Caicedo (Chelsea's £115m engine).",t:"Haller's comeback from cancer to play at this level is one of sport's best stories."},
+11:{r:'M',s:"Japan BEAT Netherlands in the 2022 R16. Round 2. The Dutch want revenge on football's ultimate giant-killers.",t:"Japan are the world's biggest giant-killers. Can they do it a THIRD tournament running?"},
+12:{r:'R',s:"Viktor Gyökeres — 100+ goals in 2 seasons at Sporting CP — announces himself on the world stage.",t:"Gyökeres could be the tournament's top scorer. Watch his intelligent movement."},
+13:{r:'M',s:"Kevin De Bruyne vs Mohamed Salah. Two all-time greats possibly playing their very last World Cup.",t:"KDB + Salah in the same match is a privilege. Watch both of them constantly."},
+14:{r:'O',s:"Chris Wood (Nottingham Forest PL striker) leads New Zealand vs Iran's Taremi and Azmoun.",t:"New Zealand always punch above their weight. Wood is capable of scoring against anyone."},
+15:{r:'R',s:"Lamine Yamal — 18 years old, already the world's most frightening teenager — makes his World Cup debut.",t:"Lamine Yamal at 18 is terrifying. Witness his debut — potentially historic."},
+16:{r:'R',s:"Saudi Arabia shocked Messi's Argentina in 2022 — biggest WC shock ever. Now face Uruguay's Darwin Núñez.",t:"Saudi vs Argentina 2022 is still the greatest shock in World Cup history. Saudi are dangerous."},
+17:{r:'M',s:"GROUP OF DEATH OPENER: Mbappé vs Mané. France vs Senegal. One giant takes an early, possibly fatal blow.",t:"This is a World Cup Final-level match happening in the group stage. Do not miss it."},
+18:{r:'M',s:"HAALAND'S WORLD CUP DEBUT. The most prolific striker alive — 50+ goals a season — steps onto the WC stage.",t:"Haaland scoring on his WC debut would be one of football's defining moments."},
+19:{r:'M',s:"MESSI'S 2026 CAMPAIGN BEGINS. Defending champion vs Algeria's Mahrez. Possibly Messi's last World Cup.",t:"This may be Messi's last World Cup. Every game he plays is a privilege to witness."},
+20:{r:'O',s:"Austria's Sabitzer (Man United) vs Jordan — making their very first ever World Cup appearance.",t:"Jordan qualifying was one of Asia's greatest achievements. Support the newcomers."},
+21:{r:'M',s:"RONALDO'S LAST WC. At 41, football's greatest scorer faces DR Congo in what may be his farewell tournament.",t:"Whatever you think of Ronaldo — watching him at 41 in a World Cup is history live."},
+22:{r:'R',s:"Luis Díaz (Liverpool) + James Rodríguez (2014 Golden Boot winner) lead Colombia vs Uzbekistan.",t:"James Rodríguez in 2014 was magical. Can he find that one last moment of genius?"},
+23:{r:'M',s:"2018 WC SEMI-FINAL REMATCH: Bellingham vs Modrić. England want revenge. Croatia want to repeat history.",t:"In 2018, Croatia beat England. Bellingham was 4 years old. Now it's his stage."},
+24:{r:'O',s:"Ghana's Kudus (West Ham, explosive) vs Panama's Carrasquilla. Entertaining and genuinely unpredictable.",t:"Kudus is one of the PL's most exciting players — watch him create chaos."},
+25:{r:'R',s:"Schick (scored from 50 yards at Euro 2020) vs South Africa's Tau in a must-win Group A clash.",t:"Schick's lob vs Scotland in 2021 is one of the greatest international goals ever scored."},
+26:{r:'R',s:"Son Heung-min vs Hirving Lozano — two Premier League-quality wingers in a game both desperately need.",t:"Free world-class football — Son and Lozano are as good as the game gets."},
+27:{r:'R',s:"Xhaka (unbeaten Bundesliga champion) vs Džeko (Man City, Roma, Inter legend). Pure European quality.",t:"Džeko is one of the most underrated strikers of his era. Watch him lead the line."},
+28:{r:'R',s:"Host Canada must win to keep World Cup hopes alive. Davies (world's fastest) is the x-factor.",t:"Alphonso Davies covers the pitch in seconds. Watch him explode into space."},
+29:{r:'R',s:"McTominay (Napoli, scores big goals) vs Morocco's Hakimi. Scotland always fight above their weight.",t:"Scotland shocked Germany at Euro 2024. They always punch above their weight."},
+30:{r:'O',s:"Brazil should win but Haiti's passion creates chaos. Vinicius Jr. vs Caribbean underdog spirit.",t:"Watch Vinicius Jr. — when running at defenders he is almost impossible to stop."},
+31:{r:'R',s:"USA must win on home soil at Lumen Field, Seattle. Pulisic + Reyna at their best vs Australia.",t:"Playing on home soil with a roaring crowd gives USA a massive natural advantage."},
+32:{r:'R',s:"Arda Güler (Real Madrid's Turkish teen, sensational talent) and Çalhanoğlu (Inter) must deliver.",t:"Güler at 19 is incredible. Don't take your eyes off him for a single second."},
+33:{r:'R',s:"Wirtz + Musiala — Germany's brilliant midfield duo, football's future — vs Ivory Coast's resistance.",t:"Wirtz and Musiala together is like watching football's future arrive in real time."},
+34:{r:'O',s:"Ecuador's dominant Caicedo vs Curaçao — the tiny island nation competing on the world's biggest stage.",t:"Caicedo's journey from Ecuador to Chelsea at £115m is one of football's best stories."},
+35:{r:'M',s:"Viktor Gyökeres (100+ goals in 2 seasons) vs Virgil van Dijk (Liverpool's defensive titan). EPIC duel.",t:"The world's best striker vs the world's best defender in the same match."},
+36:{r:'R',s:"Japan's Kubo + Doan (both play at elite European clubs) vs Gyökeres's Sweden in Group F battle.",t:"Japan have beaten Germany, Spain, Netherlands at recent World Cups. Watch HOW they do it."},
+37:{r:'R',s:"Lamine Yamal + Pedri vs Al-Dawsari who scored THAT goal vs Messi's Argentina in 2022. Spain push on.",t:"Lamine Yamal at 18 moves between defenders like nobody in history. Watch his footwork."},
+38:{r:'R',s:"Darwin Núñez (Liverpool) + Federico Valverde (Real Madrid's engine) vs Cape Verde.",t:"Valverde is arguably the most complete midfielder at this entire tournament."},
+39:{r:'M',s:"De Bruyne's Belgium vs Taremi's Iran. Belgium's golden generation vs a resilient, quality Iranian side.",t:"KDB might be the greatest midfielder ever. Watch how he controls Belgium's whole attack."},
+40:{r:'R',s:"Mohamed Salah (arguably Africa's greatest) leads Egypt vs New Zealand's Chris Wood (PL striker).",t:"Salah is still top-5 in the world. Watching him at his best is a beautiful privilege."},
+41:{r:'R',s:"Mbappé + Griezmann vs Iraq. France dominant but Group of Death has no easy matches whatsoever.",t:"Watch Mbappé's acceleration in the first 20 minutes — he's football's fastest player."},
+42:{r:'M',s:"GROUP OF DEATH CRITICAL: Haaland vs Mané. Norway fighting for survival in the world's toughest group.",t:"Two of the world's most frightening forwards in the same game. Don't miss it."},
+43:{r:'R',s:"Messi + Álvarez vs Austria. Argentina should qualify but Messi always produces moments of art.",t:"Any game with Messi is worth watching. Even comfortable wins produce moments of genius."},
+44:{r:'R',s:"Jordan (World Cup debutants!) vs Algeria's Mahrez. A historic Middle East vs North Africa clash.",t:"Jordan qualifying was one of Asian football's greatest achievements. Support the debutants."},
+45:{r:'R',s:"Ronaldo vs Uzbekistan — possibly his last chance for free-flowing World Cup goals before knockout pressure.",t:"Ronaldo is 41. Each goal he scores may be his last at this tournament. Watch closely."},
+46:{r:'R',s:"Luis Díaz (Liverpool's electric winger) leads Colombia vs DR Congo with big knockout implications.",t:"Díaz is one of the Premier League's most exciting wingers — direct, fast and lethal."},
+47:{r:'R',s:"Bellingham + Saka vs Ghana's Kudus (West Ham). Three of the Premier League's absolute best clash.",t:"Bellingham, Saka and Kudus — three PL stars all facing each other. Unmissable quality."},
+48:{r:'R',s:"Luka Modrić — 2018 WC winner, Ballon d'Or holder — possibly in his very final group stage match ever.",t:"Watch Modrić one final time in a group game. He plays football like pure poetry."},
+49:{r:'O',s:"South Africa vs South Korea — Son Heung-min chasing goals, Tau leading Bafana. Both need points.",t:"Son needs a big game to keep Korea alive. Watch him hunt goals with real desperation."},
+50:{r:'R',s:"Group A decider: Czechia vs Mexico — Schick vs Lozano, both teams desperate for the right result.",t:"Mexican fans are the loudest in the world. Even away, El Tri's support is always special."},
+51:{r:'R',s:"Switzerland vs Canada — Group B top-spot battle. Xhaka (treble winner) vs Davies (world's fastest).",t:"Alphonso Davies running at defenders is one of football's greatest recurring sights."},
+52:{r:'O',s:"Bosnia vs Qatar — possibly both eliminated. But Afif (African Player of the Year) always worth watching.",t:"Even in dead games, Afif can produce a flash of individual brilliance at any moment."},
+53:{r:'R',s:"Morocco close out Group C — Hakimi and Ziyech showcase African football at its finest.",t:"Ziyech creates magic from nowhere. Morocco attacking is simply brilliant to watch."},
+54:{r:'M',s:"ULTIMATE UNDERDOG CLASH: Scotland vs Brazil. McTominay vs Vinicius Jr. Scotland must give everything.",t:"Nothing in football beats watching a passionate underdog utterly refuse to accept defeat."},
+55:{r:'O',s:"Ivory Coast vs Curaçao. Haller the cancer survivor hunts his World Cup goals.",t:"If Haller scores at a World Cup after what he's been through, it's the tournament's best story."},
+56:{r:'M',s:"GERMANY'S CRISIS: Ecuador vs Germany — whoever wins advances. After 2018 AND 2022 group exits.",t:"Germany crashing out consecutively was shocking. Can they avoid a third straight disaster?"},
+57:{r:'R',s:"Netherlands must beat Tunisia to advance. Tunisia held France in 2022 — they fear absolutely no one.",t:"Tunisia beat France in the 2022 group stage. Van Dijk cannot take a single thing for granted."},
+58:{r:'M',s:"Group F decider: Japan's tactical brilliance vs Gyökeres's unstoppable goals. Fascinating clash.",t:"Japan's defensive tactical genius vs Gyökeres's raw power — a fascinating football chess match."},
+59:{r:'M',s:"USA vs Türkiye ON HOME SOIL in Los Angeles. Pulisic + Reyna vs Arda Güler. Massive group decider.",t:"Los Angeles is football-mad. This stadium will be the loudest of the entire tournament."},
+60:{r:'O',s:"Paraguay vs Australia — both probably eliminated. Young talent shining without any pressure.",t:"Enciso scored a PL goal-of-the-season candidate. Watch him play completely free."},
+61:{r:'M',s:"THE MATCH OF THE TOURNAMENT: Haaland vs Mbappé. Norway vs France decides the Group of Death.",t:"Haaland + Mbappé in the same game. Watch every single second of this historic match."},
+62:{r:'R',s:"Senegal need a result to survive. Mané's Africa vs Iraq's incredible World Cup qualification journey.",t:"Mané has been Africa's best player for a decade. His World Cup legacy is on the line here."},
+63:{r:'O',s:"Cape Verde vs Saudi Arabia. Al-Dawsari (scored vs Messi in 2022) in a group decider.",t:"Al-Dawsari's 2022 goal against Messi's Argentina is one of the greatest WC goals ever."},
+64:{r:'M',s:"Uruguay vs Spain — Darwin + Valverde vs Yamal + Pedri. South America meets Europe's champions.",t:"Uruguay vs Spain has always been passion-filled, technically brilliant football."},
+65:{r:'O',s:"Belgium wrap up Group G. De Bruyne chasing the one trophy missing from his legendary career.",t:"Belgium's golden generation won't last forever. This is KDB's last realistic shot."},
+66:{r:'R',s:"Salah vs Taremi: Egypt's Liverpool legend vs Iran's Inter Milan striker. Two world-class forwards.",t:"Salah is still top-5 in the world. Watching him at his absolute best is beautiful football."},
+67:{r:'R',s:"England vs Panama — Bellingham + Saka push England toward the knockout stage.",t:"England haven't won a World Cup since 1966. Watch the hope and passion of their fans."},
+68:{r:'R',s:"Croatia vs Ghana — Modrić in possibly his very last World Cup group stage game. Witness it.",t:"Watch Modrić. At 40, he still plays like poetry. One of the all-time greats."},
+69:{r:'M',s:"Colombia vs Portugal — Luis Díaz vs Ronaldo. Possibly Ronaldo's absolute last ever WC performance.",t:"Ronaldo vs Díaz in what may genuinely be Ronaldo's final competitive World Cup appearance."},
+70:{r:'O',s:"DR Congo vs Uzbekistan — two nations writing their own World Cup stories for millions of fans.",t:"Both teams are WC debutants or close to it. Every goal they score means the world."},
+71:{r:'R',s:"Algeria's Mahrez (PL champion, Africa's finest) vs Austria's Sabitzer in a Group J decider.",t:"Mahrez is one of the most technically gifted players Africa has ever produced."},
+72:{r:'M',s:"MESSI'S FINAL GROUP MATCH — Jordan vs Argentina. Every Messi touch could be his last at this level.",t:"This may be Messi's last guaranteed WC group game. You are witnessing history."}
+};
+
+/* ══════════ GROUPS DATA (dates from official PDF in IST) ══════════ */
+var GROUPS={
+A:{gd:false,teams:[{n:"Mexico",f:"🇲🇽"},{n:"South Africa",f:"🇿🇦"},{n:"South Korea",f:"🇰🇷"},{n:"Czechia",f:"🇨🇿",p:1}],
+ matches:[
+  {no:1,istDt:"2026-06-12T00:30",h:"🇲🇽",hn:"Mexico",a:"🇿🇦",an:"South Africa",venue:"Estadio Azteca, Mexico City",k:true},
+  {no:2,istDt:"2026-06-12T07:30",h:"🇰🇷",hn:"South Korea",a:"🇨🇿",an:"Czechia",venue:"Estadio Akron, Guadalajara"},
+  {no:25,istDt:"2026-06-18T21:30",h:"🇨🇿",hn:"Czechia",a:"🇿🇦",an:"South Africa",venue:"Mercedes-Benz Stadium, Atlanta"},
+  {no:26,istDt:"2026-06-19T06:30",h:"🇲🇽",hn:"Mexico",a:"🇰🇷",an:"South Korea",venue:"Estadio Akron, Guadalajara"},
+  {no:49,istDt:"2026-06-25T06:30",h:"🇿🇦",hn:"South Africa",a:"🇰🇷",an:"South Korea",venue:"Estadio BBVA, Monterrey"},
+  {no:50,istDt:"2026-06-25T06:30",h:"🇨🇿",hn:"Czechia",a:"🇲🇽",an:"Mexico",venue:"Estadio Azteca, Mexico City"},
+]},
+B:{gd:false,teams:[{n:"Canada",f:"🇨🇦"},{n:"Bosnia & Herz.",f:"🇧🇦",p:1},{n:"Qatar",f:"🇶🇦"},{n:"Switzerland",f:"🇨🇭"}],
+ matches:[
+  {no:3,istDt:"2026-06-13T00:30",h:"🇨🇦",hn:"Canada",a:"🇧🇦",an:"Bosnia & Herz.",venue:"BMO Field, Toronto"},
+  {no:5,istDt:"2026-06-14T00:30",h:"🇶🇦",hn:"Qatar",a:"🇨🇭",an:"Switzerland",venue:"Levi's Stadium, Santa Clara"},
+  {no:27,istDt:"2026-06-19T00:30",h:"🇨🇭",hn:"Switzerland",a:"🇧🇦",an:"Bosnia & Herz.",venue:"SoFi Stadium, Los Angeles"},
+  {no:28,istDt:"2026-06-19T03:30",h:"🇨🇦",hn:"Canada",a:"🇶🇦",an:"Qatar",venue:"BC Place, Vancouver"},
+  {no:51,istDt:"2026-06-25T00:30",h:"🇨🇭",hn:"Switzerland",a:"🇨🇦",an:"Canada",venue:"BC Place, Vancouver"},
+  {no:52,istDt:"2026-06-25T00:30",h:"🇧🇦",hn:"Bosnia & Herz.",a:"🇶🇦",an:"Qatar",venue:"Lumen Field, Seattle"},
+]},
+C:{gd:false,teams:[{n:"Brazil",f:"🇧🇷"},{n:"Morocco",f:"🇲🇦"},{n:"Haiti",f:"🇭🇹"},{n:"Scotland",f:"🏴󠁧󠁢󠁳󠁣󠁴󠁿"}],
+ matches:[
+  {no:6,istDt:"2026-06-14T03:30",h:"🇧🇷",hn:"Brazil",a:"🇲🇦",an:"Morocco",venue:"MetLife Stadium, New Jersey",k:true},
+  {no:7,istDt:"2026-06-14T06:30",h:"🇭🇹",hn:"Haiti",a:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",an:"Scotland",venue:"Gillette Stadium, Foxborough"},
+  {no:29,istDt:"2026-06-20T03:30",h:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",hn:"Scotland",a:"🇲🇦",an:"Morocco",venue:"Gillette Stadium, Foxborough"},
+  {no:30,istDt:"2026-06-20T06:00",h:"🇧🇷",hn:"Brazil",a:"🇭🇹",an:"Haiti",venue:"Lincoln Financial Field, Philadelphia"},
+  {no:53,istDt:"2026-06-25T03:30",h:"🇲🇦",hn:"Morocco",a:"🇭🇹",an:"Haiti",venue:"Mercedes-Benz Stadium, Atlanta"},
+  {no:54,istDt:"2026-06-25T03:30",h:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",hn:"Scotland",a:"🇧🇷",an:"Brazil",venue:"Hard Rock Stadium, Miami"},
+]},
+D:{gd:false,teams:[{n:"USA",f:"🇺🇸"},{n:"Paraguay",f:"🇵🇾"},{n:"Australia",f:"🇦🇺"},{n:"Türkiye",f:"🇹🇷",p:1}],
+ matches:[
+  {no:4,istDt:"2026-06-13T06:30",h:"🇺🇸",hn:"USA",a:"🇵🇾",an:"Paraguay",venue:"SoFi Stadium, Los Angeles"},
+  {no:8,istDt:"2026-06-14T09:30",h:"🇦🇺",hn:"Australia",a:"🇹🇷",an:"Türkiye",venue:"BC Place, Vancouver"},
+  {no:31,istDt:"2026-06-20T00:30",h:"🇺🇸",hn:"USA",a:"🇦🇺",an:"Australia",venue:"Lumen Field, Seattle"},
+  {no:32,istDt:"2026-06-20T08:30",h:"🇹🇷",hn:"Türkiye",a:"🇵🇾",an:"Paraguay",venue:"Levi's Stadium, Santa Clara"},
+  {no:55,istDt:"2026-06-26T07:30",h:"🇹🇷",hn:"Türkiye",a:"🇺🇸",an:"USA",venue:"SoFi Stadium, Los Angeles",k:true},
+  {no:56,istDt:"2026-06-26T07:30",h:"🇵🇾",hn:"Paraguay",a:"🇦🇺",an:"Australia",venue:"Levi's Stadium, Santa Clara"},
+]},
+E:{gd:false,teams:[{n:"Germany",f:"🇩🇪"},{n:"Curaçao",f:"🇨🇼"},{n:"Ivory Coast",f:"🇨🇮"},{n:"Ecuador",f:"🇪🇨"}],
+ matches:[
+  {no:9,istDt:"2026-06-14T22:30",h:"🇩🇪",hn:"Germany",a:"🇨🇼",an:"Curaçao",venue:"NRG Stadium, Houston"},
+  {no:10,istDt:"2026-06-15T04:30",h:"🇨🇮",hn:"Ivory Coast",a:"🇪🇨",an:"Ecuador",venue:"Lincoln Financial Field, Philadelphia"},
+  {no:33,istDt:"2026-06-21T01:30",h:"🇩🇪",hn:"Germany",a:"🇨🇮",an:"Ivory Coast",venue:"BMO Field, Toronto"},
+  {no:34,istDt:"2026-06-21T05:30",h:"🇪🇨",hn:"Ecuador",a:"🇨🇼",an:"Curaçao",venue:"Arrowhead Stadium, Kansas City"},
+  {no:57,istDt:"2026-06-26T01:30",h:"🇨🇼",hn:"Curaçao",a:"🇨🇮",an:"Ivory Coast",venue:"Lincoln Financial Field, Philadelphia"},
+  {no:58,istDt:"2026-06-26T01:30",h:"🇪🇨",hn:"Ecuador",a:"🇩🇪",an:"Germany",venue:"MetLife Stadium, New Jersey",k:true},
+]},
+F:{gd:false,teams:[{n:"Netherlands",f:"🇳🇱"},{n:"Japan",f:"🇯🇵"},{n:"Sweden",f:"🇸🇪",p:1},{n:"Tunisia",f:"🇹🇳"}],
+ matches:[
+  {no:11,istDt:"2026-06-15T01:30",h:"🇳🇱",hn:"Netherlands",a:"🇯🇵",an:"Japan",venue:"AT&T Stadium, Arlington",k:true},
+  {no:12,istDt:"2026-06-15T07:30",h:"🇸🇪",hn:"Sweden",a:"🇹🇳",an:"Tunisia",venue:"Estadio BBVA, Monterrey"},
+  {no:35,istDt:"2026-06-20T22:30",h:"🇳🇱",hn:"Netherlands",a:"🇸🇪",an:"Sweden",venue:"NRG Stadium, Houston"},
+  {no:36,istDt:"2026-06-21T09:30",h:"🇹🇳",hn:"Tunisia",a:"🇯🇵",an:"Japan",venue:"Estadio BBVA, Monterrey"},
+  {no:59,istDt:"2026-06-26T04:30",h:"🇹🇳",hn:"Tunisia",a:"🇳🇱",an:"Netherlands",venue:"Arrowhead Stadium, Kansas City"},
+  {no:60,istDt:"2026-06-26T04:30",h:"🇯🇵",hn:"Japan",a:"🇸🇪",an:"Sweden",venue:"AT&T Stadium, Arlington"},
+]},
+G:{gd:false,teams:[{n:"Belgium",f:"🇧🇪"},{n:"Egypt",f:"🇪🇬"},{n:"Iran",f:"🇮🇷"},{n:"New Zealand",f:"🇳🇿"}],
+ matches:[
+  {no:13,istDt:"2026-06-16T00:30",h:"🇧🇪",hn:"Belgium",a:"🇪🇬",an:"Egypt",venue:"Lumen Field, Seattle",k:true},
+  {no:14,istDt:"2026-06-16T06:30",h:"🇮🇷",hn:"Iran",a:"🇳🇿",an:"New Zealand",venue:"SoFi Stadium, Los Angeles"},
+  {no:39,istDt:"2026-06-22T00:30",h:"🇧🇪",hn:"Belgium",a:"🇮🇷",an:"Iran",venue:"SoFi Stadium, Los Angeles"},
+  {no:40,istDt:"2026-06-22T06:30",h:"🇳🇿",hn:"New Zealand",a:"🇪🇬",an:"Egypt",venue:"BC Place, Vancouver"},
+  {no:65,istDt:"2026-06-27T08:30",h:"🇳🇿",hn:"New Zealand",a:"🇧🇪",an:"Belgium",venue:"BC Place, Vancouver"},
+  {no:66,istDt:"2026-06-27T08:30",h:"🇪🇬",hn:"Egypt",a:"🇮🇷",an:"Iran",venue:"Lumen Field, Seattle"},
+]},
+H:{gd:false,teams:[{n:"Spain",f:"🇪🇸"},{n:"Cape Verde",f:"🇨🇻"},{n:"Saudi Arabia",f:"🇸🇦"},{n:"Uruguay",f:"🇺🇾"}],
+ matches:[
+  {no:15,istDt:"2026-06-15T21:30",h:"🇪🇸",hn:"Spain",a:"🇨🇻",an:"Cape Verde",venue:"Mercedes-Benz Stadium, Atlanta"},
+  {no:16,istDt:"2026-06-16T03:30",h:"🇸🇦",hn:"Saudi Arabia",a:"🇺🇾",an:"Uruguay",venue:"Hard Rock Stadium, Miami"},
+  {no:37,istDt:"2026-06-21T21:30",h:"🇪🇸",hn:"Spain",a:"🇸🇦",an:"Saudi Arabia",venue:"Mercedes-Benz Stadium, Atlanta"},
+  {no:38,istDt:"2026-06-22T03:30",h:"🇺🇾",hn:"Uruguay",a:"🇨🇻",an:"Cape Verde",venue:"Hard Rock Stadium, Miami"},
+  {no:63,istDt:"2026-06-27T05:30",h:"🇨🇻",hn:"Cape Verde",a:"🇸🇦",an:"Saudi Arabia",venue:"NRG Stadium, Houston"},
+  {no:64,istDt:"2026-06-27T05:30",h:"🇺🇾",hn:"Uruguay",a:"🇪🇸",an:"Spain",venue:"Estadio Akron, Guadalajara",k:true},
+]},
+I:{gd:true,teams:[{n:"France",f:"🇫🇷"},{n:"Senegal",f:"🇸🇳"},{n:"Iraq",f:"🇮🇶",p:1},{n:"Norway",f:"🇳🇴"}],
+ matches:[
+  {no:17,istDt:"2026-06-17T00:30",h:"🇫🇷",hn:"France",a:"🇸🇳",an:"Senegal",venue:"MetLife Stadium, New Jersey",k:true},
+  {no:18,istDt:"2026-06-17T03:30",h:"🇮🇶",hn:"Iraq",a:"🇳🇴",an:"Norway",venue:"Gillette Stadium, Foxborough"},
+  {no:41,istDt:"2026-06-23T02:30",h:"🇫🇷",hn:"France",a:"🇮🇶",an:"Iraq",venue:"Lincoln Financial Field, Philadelphia"},
+  {no:42,istDt:"2026-06-23T05:30",h:"🇳🇴",hn:"Norway",a:"🇸🇳",an:"Senegal",venue:"BMO Field, Toronto",k:true},
+  {no:61,istDt:"2026-06-27T00:30",h:"🇳🇴",hn:"Norway",a:"🇫🇷",an:"France",venue:"Gillette Stadium, Foxborough",k:true},
+  {no:62,istDt:"2026-06-27T00:30",h:"🇸🇳",hn:"Senegal",a:"🇮🇶",an:"Iraq",venue:"BMO Field, Toronto"},
+]},
+J:{gd:false,teams:[{n:"Argentina",f:"🇦🇷"},{n:"Algeria",f:"🇩🇿"},{n:"Austria",f:"🇦🇹"},{n:"Jordan",f:"🇯🇴"}],
+ matches:[
+  {no:19,istDt:"2026-06-17T06:30",h:"🇦🇷",hn:"Argentina",a:"🇩🇿",an:"Algeria",venue:"Arrowhead Stadium, Kansas City",k:true},
+  {no:20,istDt:"2026-06-17T09:30",h:"🇦🇹",hn:"Austria",a:"🇯🇴",an:"Jordan",venue:"Levi's Stadium, Santa Clara"},
+  {no:43,istDt:"2026-06-22T22:30",h:"🇦🇷",hn:"Argentina",a:"🇦🇹",an:"Austria",venue:"AT&T Stadium, Arlington"},
+  {no:44,istDt:"2026-06-23T08:30",h:"🇯🇴",hn:"Jordan",a:"🇩🇿",an:"Algeria",venue:"Levi's Stadium, Santa Clara"},
+  {no:71,istDt:"2026-06-28T07:30",h:"🇩🇿",hn:"Algeria",a:"🇦🇹",an:"Austria",venue:"Arrowhead Stadium, Kansas City"},
+  {no:72,istDt:"2026-06-28T07:30",h:"🇯🇴",hn:"Jordan",a:"🇦🇷",an:"Argentina",venue:"AT&T Stadium, Arlington"},
+]},
+K:{gd:false,teams:[{n:"Portugal",f:"🇵🇹"},{n:"DR Congo",f:"🇨🇩",p:1},{n:"Uzbekistan",f:"🇺🇿"},{n:"Colombia",f:"🇨🇴"}],
+ matches:[
+  {no:21,istDt:"2026-06-17T22:30",h:"🇵🇹",hn:"Portugal",a:"🇨🇩",an:"DR Congo",venue:"NRG Stadium, Houston",k:true},
+  {no:22,istDt:"2026-06-18T07:30",h:"🇺🇿",hn:"Uzbekistan",a:"🇨🇴",an:"Colombia",venue:"Estadio Azteca, Mexico City"},
+  {no:45,istDt:"2026-06-23T22:30",h:"🇵🇹",hn:"Portugal",a:"🇺🇿",an:"Uzbekistan",venue:"NRG Stadium, Houston"},
+  {no:46,istDt:"2026-06-24T07:30",h:"🇨🇴",hn:"Colombia",a:"🇨🇩",an:"DR Congo",venue:"Estadio Akron, Guadalajara"},
+  {no:69,istDt:"2026-06-28T05:00",h:"🇨🇴",hn:"Colombia",a:"🇵🇹",an:"Portugal",venue:"Hard Rock Stadium, Miami",k:true},
+  {no:70,istDt:"2026-06-28T05:00",h:"🇨🇩",hn:"DR Congo",a:"🇺🇿",an:"Uzbekistan",venue:"Mercedes-Benz Stadium, Atlanta"},
+]},
+L:{gd:false,teams:[{n:"England",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿"},{n:"Croatia",f:"🇭🇷"},{n:"Ghana",f:"🇬🇭"},{n:"Panama",f:"🇵🇦"}],
+ matches:[
+  {no:23,istDt:"2026-06-18T01:30",h:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",hn:"England",a:"🇭🇷",an:"Croatia",venue:"AT&T Stadium, Arlington",k:true},
+  {no:24,istDt:"2026-06-18T04:30",h:"🇬🇭",hn:"Ghana",a:"🇵🇦",an:"Panama",venue:"BMO Field, Toronto"},
+  {no:47,istDt:"2026-06-24T01:30",h:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",hn:"England",a:"🇬🇭",an:"Ghana",venue:"Gillette Stadium, Foxborough"},
+  {no:48,istDt:"2026-06-24T04:30",h:"🇵🇦",hn:"Panama",a:"🇭🇷",an:"Croatia",venue:"BMO Field, Toronto"},
+  {no:67,istDt:"2026-06-28T02:30",h:"🇵🇦",hn:"Panama",a:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",an:"England",venue:"MetLife Stadium, New Jersey"},
+  {no:68,istDt:"2026-06-28T02:30",h:"🇭🇷",hn:"Croatia",a:"🇬🇭",an:"Ghana",venue:"Lincoln Financial Field, Philadelphia"},
+]}
+};
+
+var KNOCKOUT={
+R32:{label:"Round of 32",matches:[
+ {no:73,date:"Jun 29",time:"TBD",t1:"Winner A",t2:"Runner-Up B",venue:"SoFi Stadium, LA"},
+ {no:74,date:"Jun 29",time:"TBD",t1:"Winner E",t2:"Best 3rd (A/B/C/D/F)",venue:"NRG Stadium, Houston"},
+ {no:75,date:"Jun 30",time:"TBD",t1:"Winner F",t2:"Runner-Up C",venue:"Gillette Stadium, Boston"},
+ {no:76,date:"Jun 30",time:"TBD",t1:"Winner C",t2:"Runner-Up F",venue:"Estadio BBVA, Monterrey"},
+ {no:77,date:"Jun 30",time:"TBD",t1:"Winner I",t2:"Best 3rd (C/D/F/G/H)",venue:"AT&T Stadium, Dallas"},
+ {no:78,date:"Jul 1",time:"TBD",t1:"Runner-Up E",t2:"Runner-Up I",venue:"MetLife Stadium, NJ"},
+ {no:79,date:"Jul 1",time:"TBD",t1:"Winner A",t2:"Best 3rd (C/F/H/I)",venue:"Estadio Azteca, Mexico City"},
+ {no:80,date:"Jul 1",time:"TBD",t1:"Winner H",t2:"Best 3rd (E/H/I/J/K)",venue:"Mercedes-Benz, Atlanta"},
+ {no:81,date:"Jul 1",time:"TBD",t1:"Winner D",t2:"Best 3rd (B/E/F/I/J)",venue:"Lumen Field, Seattle"},
+ {no:82,date:"Jul 1",time:"TBD",t1:"Winner G",t2:"Best 3rd (A/E/H/I/J)",venue:"Levi's Stadium, SF"},
+ {no:83,date:"Jul 2",time:"TBD",t1:"Runner-Up K",t2:"Runner-Up L",venue:"SoFi Stadium, LA"},
+ {no:84,date:"Jul 2",time:"TBD",t1:"Winner H",t2:"Runner-Up J",venue:"BMO Field, Toronto"},
+ {no:85,date:"Jul 2",time:"TBD",t1:"Winner B",t2:"Best 3rd (E/F/G/I/J)",venue:"BC Place, Vancouver"},
+ {no:86,date:"Jul 3",time:"TBD",t1:"Winner J",t2:"Runner-Up H",venue:"AT&T Stadium, Dallas"},
+ {no:87,date:"Jul 4",time:"TBD",t1:"Winner K",t2:"Best 3rd (D/E/I/J/L)",venue:"Hard Rock Stadium, Miami"},
+ {no:88,date:"Jul 4",time:"TBD",t1:"Runner-Up D",t2:"Runner-Up G",venue:"Arrowhead Stadium, KC"}
+]},
+R16:{label:"Round of 16",matches:[
+ {no:89,date:"Jul 4",time:"TBD",t1:"W #74",t2:"W #77",venue:"NRG Stadium, Houston"},
+ {no:90,date:"Jul 5",time:"TBD",t1:"W #73",t2:"W #75",venue:"Lincoln Financial Field, Philadelphia"},
+ {no:91,date:"Jul 6",time:"TBD",t1:"W #76",t2:"W #78",venue:"MetLife Stadium, NJ"},
+ {no:92,date:"Jul 6",time:"TBD",t1:"W #79",t2:"W #80",venue:"Estadio Azteca, Mexico City"},
+ {no:93,date:"Jul 7",time:"TBD",t1:"W #83",t2:"W #84",venue:"AT&T Stadium, Dallas"},
+ {no:94,date:"Jul 7",time:"TBD",t1:"W #81",t2:"W #82",venue:"Lumen Field, Seattle"},
+ {no:95,date:"Jul 7",time:"TBD",t1:"W #86",t2:"W #88",venue:"Mercedes-Benz, Atlanta"},
+ {no:96,date:"Jul 8",time:"TBD",t1:"W #85",t2:"W #87",venue:"BC Place, Vancouver"}
+]},
+QF:{label:"Quarter-Finals",matches:[
+ {no:97,date:"Jul 10",time:"TBD",t1:"W #89",t2:"W #90",venue:"Gillette Stadium, Boston"},
+ {no:98,date:"Jul 11",time:"TBD",t1:"W #93",t2:"W #94",venue:"SoFi Stadium, Los Angeles"},
+ {no:99,date:"Jul 12",time:"TBD",t1:"W #91",t2:"W #92",venue:"Hard Rock Stadium, Miami"},
+ {no:100,date:"Jul 12",time:"TBD",t1:"W #95",t2:"W #96",venue:"Arrowhead Stadium, KC"}
+]},
+SF:{label:"Semi-Finals",matches:[
+ {no:101,date:"Jul 15",time:"TBD",t1:"W #97",t2:"W #98",venue:"AT&T Stadium, Dallas"},
+ {no:102,date:"Jul 16",time:"TBD",t1:"W #99",t2:"W #100",venue:"Mercedes-Benz, Atlanta"}
+]},
+"3P":{label:"Third Place",matches:[
+ {no:103,date:"Jul 18",time:"TBD",t1:"Runners-Up SF #101",t2:"Runners-Up SF #102",venue:"Hard Rock Stadium, Miami"}
+]}
+};
+
+var VENUES=[
+ {n:"MetLife Stadium",c:"East Rutherford, NJ 🇺🇸",cap:"82,500"},
+ {n:"SoFi Stadium",c:"Los Angeles, CA 🇺🇸",cap:"70,240"},
+ {n:"AT&T Stadium",c:"Arlington, TX 🇺🇸",cap:"80,000"},
+ {n:"Arrowhead Stadium",c:"Kansas City, MO 🇺🇸",cap:"76,416"},
+ {n:"NRG Stadium",c:"Houston, TX 🇺🇸",cap:"72,220"},
+ {n:"Hard Rock Stadium",c:"Miami Gardens, FL 🇺🇸",cap:"65,326"},
+ {n:"Gillette Stadium",c:"Foxborough, MA 🇺🇸",cap:"65,878"},
+ {n:"Levi's Stadium",c:"Santa Clara, CA 🇺🇸",cap:"68,500"},
+ {n:"Lincoln Financial Field",c:"Philadelphia, PA 🇺🇸",cap:"69,176"},
+ {n:"Mercedes-Benz Stadium",c:"Atlanta, GA 🇺🇸",cap:"71,000"},
+ {n:"Lumen Field",c:"Seattle, WA 🇺🇸",cap:"69,000"},
+ {n:"Estadio Azteca",c:"Mexico City 🇲🇽",cap:"87,523"},
+ {n:"Estadio BBVA",c:"Monterrey 🇲🇽",cap:"53,500"},
+ {n:"Estadio Akron",c:"Guadalajara 🇲🇽",cap:"49,850"},
+ {n:"BC Place",c:"Vancouver 🇨🇦",cap:"54,500"},
+ {n:"BMO Field",c:"Toronto 🇨🇦",cap:"45,736"}
+];
+
+var QR=[
+ {date:"Jun 12",istT:"12:30 AM",match:"🇲🇽 Mexico vs South Africa 🇿🇦",venue:"Estadio Azteca — OPENING MATCH 🎉",key:true},
+ {date:"Jun 14",istT:"3:30 AM",match:"🇧🇷 Brazil vs Morocco 🇲🇦",venue:"MetLife Stadium, New Jersey",key:true},
+ {date:"Jun 15",istT:"1:30 AM",match:"🇳🇱 Netherlands vs Japan 🇯🇵",venue:"AT&T Stadium, Arlington",key:true},
+ {date:"Jun 15",istT:"9:30 PM",match:"🇪🇸 Spain vs Cape Verde 🇨🇻",venue:"Mercedes-Benz Stadium, Atlanta"},
+ {date:"Jun 16",istT:"12:30 AM",match:"🇧🇪 Belgium vs Egypt 🇪🇬",venue:"Lumen Field, Seattle",key:true},
+ {date:"Jun 17",istT:"12:30 AM",match:"🇫🇷 France vs Senegal 🇸🇳",venue:"MetLife Stadium, NJ — Group of Death",key:true},
+ {date:"Jun 17",istT:"6:30 AM",match:"🇦🇷 Argentina vs Algeria 🇩🇿",venue:"Arrowhead Stadium, Kansas City",key:true},
+ {date:"Jun 17",istT:"10:30 PM",match:"🇵🇹 Portugal vs DR Congo 🇨🇩",venue:"NRG Stadium, Houston",key:true},
+ {date:"Jun 18",istT:"1:30 AM",match:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 England vs Croatia 🇭🇷",venue:"AT&T Stadium, Arlington",key:true},
+ {date:"Jun 21",istT:"9:30 PM",match:"🇪🇸 Spain vs Saudi Arabia 🇸🇦",venue:"Mercedes-Benz Stadium, Atlanta"},
+ {date:"Jun 23",istT:"5:30 AM",match:"🇳🇴 Norway vs Senegal 🇸🇳",venue:"BMO Field, Toronto — Group of Death",key:true},
+ {date:"Jun 27",istT:"12:30 AM",match:"🇳🇴 Norway vs France 🇫🇷",venue:"Gillette Stadium, Foxborough — Decisive",key:true},
+ {date:"Jun 27",istT:"5:30 AM",match:"🇺🇾 Uruguay vs Spain 🇪🇸",venue:"Estadio Akron, Guadalajara — Decisive",key:true},
+ {date:"Jun 28–Jul 4",istT:"Various",match:"🥊 Round of 32 — 16 matches",venue:"USA · Canada · Mexico"},
+ {date:"Jul 4–8",istT:"Various",match:"⚔️ Round of 16 — 8 matches",venue:"Multiple Venues"},
+ {date:"Jul 10–12",istT:"Various",match:"💥 Quarter-Finals — 4 matches",venue:"Boston · LA · Miami · Kansas City",key:true},
+ {date:"Jul 15–16",istT:"TBD",match:"🔥 Semi-Finals",venue:"AT&T Stadium, Dallas & Mercedes-Benz, Atlanta",key:true},
+ {date:"Jul 18",istT:"TBD",match:"🥉 Third Place Playoff",venue:"Hard Rock Stadium, Miami"},
+ {date:"Jul 19",istT:"TBD",match:"🏆 THE FINAL — Match #104",venue:"MetLife Stadium, East Rutherford, New Jersey",key:true}
+];
+
+var FACTS=[
+ {e:"🇧🇷",t:"Brazil's Perfect Attendance",b:"Brazil is the only nation to have appeared at every FIFA World Cup since 1930 — a perfect record spanning nearly a century of football."},
+ {e:"📊",t:"Biggest World Cup Ever",b:"2026 is the first with 48 teams — producing 104 matches over 39 days. More football than any previous edition."},
+ {e:"🌎",t:"A Tri-Nation First",b:"USA, Canada and Mexico become the first trio of nations ever to co-host a World Cup, spanning the entire North American continent."},
+ {e:"🇲🇽",t:"Mexico's Third World Cup",b:"Mexico becomes the first country to host the World Cup three times, having previously hosted 1970 and 1986. Azteca returns to the spotlight."},
+ {e:"🏟",t:"The Grand Final Venue",b:"MetLife Stadium (82,500 capacity) in New Jersey hosts the Final — larger than any 2022 Qatar stadium. Also hosted Super Bowl XLVIII."},
+ {e:"📐",t:"New Format",b:"12 groups of 4. Top 2 from each group plus 8 best third-placed teams advance. Meaning 67% of all group stage teams progress — incredible value."},
+ {e:"☠",t:"Group of Death",b:"Group I: France, Senegal, Norway (Haaland), Iraq. Three of these four could realistically win a World Cup — but one will be eliminated in groups."},
+ {e:"⚡",t:"Haaland's Debut",b:"Erling Haaland — the most prolific striker of his generation — makes his FIFA World Cup debut in 2026. Every minute he plays is history."},
+ {e:"👑",t:"Messi's Final Curtain",b:"Lionel Messi at 38 may play his last World Cup. The defending champion enters as the greatest player of all time seeking one final triumph."},
+ {e:"🎯",t:"Ronaldo Chases Records",b:"Cristiano Ronaldo at 41 would be the oldest outfield player to score at a World Cup if he nets in 2026. He already holds goals records in 5 tournaments."},
+ {e:"🇩🇪",t:"Germany's Redemption Arc",b:"Germany crashed out of the group stage in 2018 AND 2022. With Wirtz and Musiala — arguably football's most gifted duo — 2026 is their shot at redemption."},
+ {e:"📺",t:"Record Global Viewership",b:"The 2022 Final drew 1.5 billion viewers. The 2026 edition in football-hungry North America is expected to shatter every previous global viewership record."},
+ {e:"🕐",t:"IST Night Football",b:"The most dramatic matches (12:30 AM and 3:30 AM IST) kick off late because North America is 10–13 hours behind India. Toggle to GCC for UAE timings."},
+ {e:"🇺🇸",t:"Football Arrives in America",b:"The USA hosted 1994 when MLS didn't exist. Now 32 years later — with a thriving league and genuine world-class players — America are real contenders on home soil."},
+ {e:"🇸🇳",t:"Africa's Best Ever?",b:"Senegal under Mané won the 2021 and 2023 Africa Cup of Nations. They might be the strongest African side since the great Ghanaian and Ivorian teams of the 2000s."},
+ {e:"⚽",t:"Lamine Yamal — The Teenager",b:"Spain's Yamal is just 18 at the 2026 World Cup. He already won Euro 2024 and a Champions League. Some say he's the heir to Messi and Ronaldo's era."},
+ {e:"🇯🇵",t:"Japan's Golden Generation",b:"Japan have their most technically gifted generation ever — Kubo, Mitoma, Doan all play at elite European clubs. A quarter-final run would be extraordinary but not impossible."},
+ {e:"🔝",t:"104 Matches of Football",b:"The group stage alone delivers 72 matches — more than the entire 2018 or 2022 tournaments combined. Six weeks of world-class football almost every single day."}
+];
+
+/* ══════════ TIME UTILITIES ══════════ */
+var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+var DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+function parseDt(istDt){
+  var p=istDt.split('T'),d=p[0].split('-').map(Number),t=p[1].split(':').map(Number);
+  return new Date(d[0],d[1]-1,d[2],t[0],t[1],0);
+}
+function fmtTime(d){
+  var h=d.getHours(),m=d.getMinutes(),ap=h<12?'AM':'PM';
+  if(h===0)h=12;else if(h>12)h-=12;
+  return h+':'+(m<10?'0':'')+m+' '+ap;
+}
+function fmtDate(d){return MONTHS[d.getMonth()]+' '+d.getDate();}
+function fmtDay(d){return DAYS[d.getDay()];}
+
+function enrichMatches(){
+  Object.values(GROUPS).forEach(function(grp){
+    grp.matches.forEach(function(m){
+      var ist=parseDt(m.istDt),gcc=new Date(ist.getTime()-90*60000);
+      m._it=fmtTime(ist);m._id=fmtDate(ist);m._idn=fmtDay(ist);
+      m._gt=fmtTime(gcc);m._gd=fmtDate(gcc);m._gdn=fmtDay(gcc);
+    });
+  });
+}
+enrichMatches();
+
+function disp(m){
+  return currentTZ==='GCC'?{t:m._gt,d:m._gd,dn:m._gdn}:{t:m._it,d:m._id,dn:m._idn};
+}
+
+/* ══════════ BADGE BUILDER ══════════ */
+function buildBadges(m,isGD){
+  var b=MB[m.no]||[],r=[];
+  if(b.indexOf('opening')>=0) r.push('<span class="bdg bdg-opening">⭐ Opening</span>');
+  if(m.k)                      r.push('<span class="bdg bdg-watch">🔥 Must Watch</span>');
+  if(isGD||b.indexOf('god')>=0)r.push('<span class="bdg bdg-god">☠ Death Group</span>');
+  if(b.indexOf('rivalry')>=0)  r.push('<span class="bdg bdg-rivalry">⚔ Rivalry</span>');
+  if(m.no>=49&&m.no<=72)       r.push('<span class="bdg bdg-decider">🏆 Decider</span>');
+  return r.slice(0,2).join('');
+}
+
+/* ══════════ MATCH CARD — single source of truth, no onclick ══════════ */
+function mkCard(m,grpKey){
+  if(!m.h) return '';
+  var isGD=grpKey&&GROUPS[grpKey]&&GROUPS[grpKey].gd;
+  var grpLbl=grpKey?'GROUP '+grpKey:'';
+  var dp=disp(m);
+  var badges=buildBadges(m,isGD);
+  var heroes=H[m.no]||[];
+  var info=MI[m.no]||{};
+  var rL={M:'🔥 Must Watch',R:'⭐ Recommended',O:'📺 Optional'};
+  var rC={M:'var(--red)',R:'var(--gold)',O:'var(--muted2)'};
+
+  /* Story section */
+  var story='';
+  if(info.s){
+    var rBadge=info.r?('<span style="font-family:\'Barlow Condensed\',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;color:'+rC[info.r]+'">'+rL[info.r]+'</span>'):'';
+    var tip=info.t?('<span style="font-size:10px;color:#7EB3FF;font-family:\'Barlow Condensed\',sans-serif;font-weight:600;margin-left:8px">💡 '+info.t+'</span>'):'';
+    story='<div class="d-story"><div class="d-label">📖 Why This Match Matters</div><div class="d-text">'+info.s+'</div><div class="d-meta">'+rBadge+tip+'</div></div>';
+  }
+
+  /* Heroes section */
+  var heroHtml='';
+  if(heroes.length){
+    var mkH=function(h){return '<div class="hcard"><div class="hcard-top"><span class="hc-flag">'+h.f+'</span><div><span class="hc-name">'+h.n+'</span><span class="hc-pos">'+h.p+'</span></div></div><div class="hc-desc">'+h.d+'</div></div>';};
+    var t1=heroes.filter(function(_,i){return i<2;}).map(mkH).join('');
+    var t2=heroes.filter(function(_,i){return i>=2;}).map(mkH).join('');
+    heroHtml='<div class="heroes-label">⭐ Players to Watch · Tap again to close</div><div class="heroes-split"><div class="heroes-col"><div class="heroes-hd">'+m.h+' '+m.hn+'</div>'+t1+'</div><div class="heroes-div"></div><div class="heroes-col"><div class="heroes-hd">'+m.a+' '+m.an+'</div>'+t2+'</div></div>';
+  }
+
+  var hasDetail=!!(story||heroHtml);
+  var detail=hasDetail?'<div class="mc-detail">'+story+heroHtml+'</div>':'';
+  var tapBdg=hasDetail?'<span class="bdg" style="background:rgba(0,230,118,0.06);border:1px solid rgba(0,230,118,0.2);color:var(--green)">👁 Tap</span>':'';
+  var grpSpan=grpLbl?'<span class="mc-grp'+(isGD?' gd':'')+'>'+(isGD?'☠ GROUP OF DEATH':grpLbl)+'</span>':'';
+
+  return '<div class="mc'+(m.k?' key-match':'')+'">'+
+    '<div class="mc-top"><span class="mc-no">MATCH #'+m.no+'</span>'+grpSpan+'<span class="mc-date" data-mno="'+m.no+'">'+(dp.dn?dp.dn+' · ':'')+dp.d+'</span></div>'+
+    '<div class="mc-body">'+
+    '<div class="tside"><div class="tflag">'+m.h+'</div><div class="tname">'+m.hn+'</div></div>'+
+    '<div class="mc-ctr"><div class="mc-time" data-mno="'+m.no+'">'+dp.t+'</div><div class="mc-tzl">'+currentTZ+'</div><div class="mc-vs">VS</div></div>'+
+    '<div class="tside"><div class="tflag">'+m.a+'</div><div class="tname">'+m.an+'</div></div>'+
+    '</div>'+
+    '<div class="mc-bot"><span class="mc-venue">📍 '+m.venue+'</span><div class="mc-badges">'+badges+tapBdg+'</div></div>'+
+    detail+'</div>';
+}
+
+/* ══════════ FLAT ARRAY ══════════ */
+var allM=[];
+Object.keys(GROUPS).forEach(function(g){GROUPS[g].matches.forEach(function(m){allM.push(Object.assign({},m,{group:g}));});});
+allM.sort(function(a,b){return a.no-b.no;});
+var byDay={};
+allM.forEach(function(m){if(!byDay[m._id])byDay[m._id]=[];byDay[m._id].push(m);});
+
+/* ══════════ TZ SWITCHER ══════════ */
+function setTZ(tz){
+  currentTZ=tz;
+  try{localStorage.setItem('wc26tz',tz);}catch(e){}
+  document.getElementById('btn-ist').classList.toggle('active',tz==='IST');
+  document.getElementById('btn-gcc').classList.toggle('active',tz==='GCC');
+  document.getElementById('tz-badge').textContent=tz==='IST'?'⚽ All Times in Indian Standard Time (IST)':'⚽ All Times in Gulf Standard Time (GCC)';
+  allM.forEach(function(m){
+    var dp=disp(m);
+    document.querySelectorAll('.mc-time[data-mno="'+m.no+'"]').forEach(function(el){el.textContent=dp.t;});
+    document.querySelectorAll('.mc-date[data-mno="'+m.no+'"]').forEach(function(el){el.textContent=(dp.dn?dp.dn+' · ':'')+dp.d;});
+  });
+  document.querySelectorAll('.mc-tzl').forEach(function(el){el.textContent=tz;});
+  document.querySelectorAll('[data-qist]').forEach(function(el){
+    var t=el.dataset.qist;
+    if(tz==='GCC'){
+      var m=t.match(/^(\d+):(\d+)\s*(AM|PM)$/i);
+      if(m){
+        var h=parseInt(m[1]),mn=parseInt(m[2]),ap=m[3].toUpperCase();
+        if(ap==='AM'&&h===12)h=0;if(ap==='PM'&&h!==12)h+=12;
+        var tot=h*60+mn-90;if(tot<0)tot+=1440;
+        var nh=Math.floor(tot/60),nm=tot%60,nap=nh<12?'AM':'PM';
+        if(nh===0)nh=12;else if(nh>12)nh-=12;
+        el.textContent=nh+':'+(nm<10?'0':'')+nm+' '+nap;
+      }
+    }else{el.textContent=t;}
+  });
+  renderToday();
+}
+
+/* ══════════ RENDER: TZ TABLE ══════════ */
+(function(){
+  var el=document.getElementById('tzTbl'),f=document.createDocumentFragment();
+  TZ_TABLE.forEach(function(r,i){
+    var d=document.createElement('div');d.className='tzrow';
+    if(i%2)d.style.background='rgba(255,255,255,.02)';
+    d.innerHTML='<span>'+r[0]+'</span><span style="color:var(--muted);font-family:\'Barlow Condensed\',sans-serif;font-size:11px">'+r[1]+'</span><span style="color:var(--red);font-family:\'Barlow Condensed\',sans-serif;font-weight:700;font-size:12px;white-space:nowrap">'+r[2]+'</span>';
+    f.appendChild(d);
+  });el.appendChild(f);
+})();
+
+/* ══════════ RENDER: ALL 48 TEAMS ══════════ */
+(function(){
+  var el=document.getElementById('allTeams'),html='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:8px">';
+  Object.keys(GROUPS).forEach(function(g){
+    var data=GROUPS[g];
+    html+='<div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:12px 14px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--green);letter-spacing:2px">GROUP '+g+'</span>'+(data.gd?'<span style="background:var(--red-dim);border:1px solid rgba(255,69,58,0.3);border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;color:var(--red);font-family:\'Barlow Condensed\',sans-serif">☠ DEATH</span>':'')+'</div>';
+    data.teams.forEach(function(t){html+='<div style="display:flex;align-items:center;gap:7px;padding:4px 0;border-bottom:1px solid var(--border);font-family:\'Barlow Condensed\',sans-serif;font-weight:700;font-size:13px"><span style="font-size:20px">'+t.f+'</span><span>'+t.n+'</span>'+(t.p?'<span style="background:rgba(255,69,58,.15);border-radius:3px;padding:1px 4px;font-size:8px;font-weight:700;color:var(--red)">PO</span>':'')+'</div>';});
+    html+='</div>';
+  });
+  el.innerHTML=html+'</div>';
+})();
+
+/* ══════════ RENDER: PROGRESS TRACKER ══════════ */
+(function(){
+  var el=document.getElementById('progTracker'),now=new Date();
+  var start=new Date('2026-06-12T00:00:00'),end=new Date('2026-07-19T23:59:00');
+  if(now<start||now>end){
+    el.innerHTML='<div class="prog-card"><div class="prog-row"><span class="prog-lbl">Status</span><span class="prog-val" style="color:var(--gold)">'+(now<start?'Upcoming':'Completed')+'</span></div><div class="prog-bg"><div class="prog-fill" style="width:'+(now<start?0:100)+'%"></div></div><div class="prog-stats"><span class="prog-stat">Opens: <span>Jun 12, 2026</span></span><span class="prog-stat">Final: <span>Jul 19, 2026</span></span><span class="prog-stat">Total: <span>104 Matches</span></span></div></div>';
+    return;
+  }
+  var totalDays=39,daysPassed=Math.min(39,Math.floor((now-start)/86400000));
+  var played=allM.filter(function(m){try{return parseDt(m.istDt)<=now;}catch(e){return false;}}).length;
+  var pct=Math.round((daysPassed/totalDays)*100);
+  el.innerHTML='<div class="prog-card"><div class="prog-row"><span class="prog-lbl">🏆 Tournament Progress</span><span class="prog-val">Day '+(daysPassed+1)+' of '+totalDays+'</span></div><div class="prog-bg"><div class="prog-fill" style="width:'+pct+'%"></div></div><div class="prog-stats"><span class="prog-stat">Day <span>'+(daysPassed+1)+'/'+totalDays+'</span></span><span class="prog-stat">Matches <span>'+played+'/72</span></span><span class="prog-stat">Progress <span>'+pct+'%</span></span></div></div>';
+})();
+
+/* ══════════ RENDER: TODAY ══════════ */
+function renderToday(){
+  var el=document.getElementById('today-content'),sub=document.getElementById('today-sub');
+  var now=new Date(),todayStr=fmtDate(now);
+  var todayMs=allM.filter(function(m){return m._id===todayStr;});
+  if(todayMs.length>0){
+    sub.textContent=fmtDay(now)+' · '+todayStr+' · '+todayMs.length+' Match'+(todayMs.length>1?'es':'')+' Today';
+    el.innerHTML='<div class="today-bann"><div class="today-t">🔥 Live Today</div><div class="today-s">'+todayStr+' · All times '+currentTZ+'</div></div>'+todayMs.map(function(m){return mkCard(m,m.group);}).join('');
+  } else {
+    var nowMid=new Date(now);nowMid.setHours(0,0,0,0);
+    var upcoming=allM.filter(function(m){try{return parseDt(m.istDt)>=nowMid;}catch(e){return false;}});
+    if(upcoming.length>0){
+      var nd=upcoming[0]._id,nms=allM.filter(function(m){return m._id===nd;});
+      sub.textContent='No matches today · Next: '+nd;
+      el.innerHTML='<div class="today-bann" style="background:linear-gradient(135deg,rgba(0,230,118,0.08),rgba(0,230,118,0.03));border-color:rgba(0,230,118,0.2)"><div class="today-t" style="color:var(--green)">⚡ Next Fixtures</div><div class="today-s">'+nd+' · '+nms.length+' Match'+(nms.length>1?'es':'')+'</div></div>'+nms.map(function(m){return mkCard(m,m.group);}).join('');
+    } else {
+      sub.textContent='Tournament not in progress';
+      el.innerHTML='<div class="no-match" style="text-align:center;padding:28px"><div style="font-size:40px;margin-bottom:10px">🏆</div><div style="font-family:\'Barlow Condensed\',sans-serif;font-size:16px;color:var(--muted2)">Tournament: Jun 12 – Jul 19, 2026</div></div>';
+    }
+  }
+}
+
+/* ══════════ RENDER: BY DATE ══════════ */
+var dfEl=document.getElementById('dateFilters'),bdEl=document.getElementById('byDateContent');
+function renderByDate(fd){
+  document.querySelectorAll('#dateFilters .gtab').forEach(function(b){b.classList.toggle('active',b.dataset.d===(fd||'all'));});
+  var days=fd&&fd!=='all'?{[fd]:byDay[fd]}:byDay;
+  var html='';
+  Object.keys(days).forEach(function(date){
+    var ms=days[date],d0=parseDt(ms[0].istDt);
+    html+='<div class="dhd">'+date+'<span class="dhd-c">'+ms.length+' match'+(ms.length>1?'es':'')+'</span><span class="dhd-d">'+fmtDay(d0)+'</span></div>';
+    ms.forEach(function(m){html+=mkCard(m,m.group);});
+  });
+  bdEl.innerHTML=html;
+}
+dfEl.innerHTML='<button class="gtab active" data-d="all" onclick="renderByDate(\'all\')">All Dates</button>';
+Object.keys(byDay).forEach(function(d){
+  var d0=parseDt(byDay[d][0].istDt);
+  dfEl.innerHTML+='<button class="gtab" data-d="'+d+'" onclick="renderByDate(\''+d+'\')">'+fmtDay(d0)+' '+d+'</button>';
+});
+renderByDate(null);
+
+/* ══════════ RENDER: GROUPS ══════════ */
+(function(){
+  var gt=document.getElementById('groupTabs'),gp=document.getElementById('groupPanels'),first=true;
+  Object.keys(GROUPS).forEach(function(g){
+    var data=GROUPS[g],f=first;first=false;
+    gt.innerHTML+='<button class="gtab'+(f?' active':'')+'" onclick="showGroup(\''+g+'\',this)">GRP '+g+'</button>';
+    var chips=data.teams.map(function(t){return '<div class="gchip"><span style="font-size:22px">'+t.f+'</span><span style="font-family:\'Barlow Condensed\',sans-serif;font-weight:700;font-size:13px">'+t.n+'</span>'+(t.p?'<span style="background:rgba(255,69,58,.15);border-radius:3px;padding:1px 4px;font-size:8px;font-weight:700;color:var(--red);font-family:\'Barlow Condensed\',sans-serif">PO</span>':'')+'</div>';}).join('');
+    var cards=data.matches.map(function(m){return mkCard(m,g);}).join('');
+    gp.innerHTML+='<div id="gp-'+g+'" class="gpanel'+(f?' active':'')+'"><div class="g-banner"><div class="g-letter">'+g+'</div><div class="g-teams">'+chips+'</div></div><div class="g-matches">'+(data.gd?'<div class="god-banner">☠ GROUP OF DEATH — France · Senegal · Norway · Iraq</div>':'')+cards+'</div></div>';
+  });
+})();
+
+/* ══════════ RENDER: KNOCKOUT ══════════ */
+(function(){
+  var kt=document.getElementById('koTabs'),kp=document.getElementById('koPanels'),first=true;
+  Object.keys(KNOCKOUT).forEach(function(key){
+    var data=KNOCKOUT[key],f=first;first=false;
+    kt.innerHTML+='<button class="gtab'+(f?' active':'')+'" onclick="showKO(\''+key+'\',this)">'+data.label+'</button>';
+    var rows=data.matches.map(function(m,i){return '<div class="ko-row" style="'+(i%2?'background:rgba(255,255,255,0.02)':'')+'"><div class="ko-no">#'+m.no+'</div><div class="ko-date">'+m.date+'</div><div class="ko-time">'+m.time+'</div><div class="ko-teams">'+m.t1+' <span style="color:var(--muted);font-size:11px">vs</span> '+m.t2+'</div><div class="ko-venue">'+m.venue+'</div></div>';}).join('');
+    kp.innerHTML+='<div id="ko-'+key+'" class="gpanel'+(f?' active':'')+'"><div class="ko-hd">🏆 '+data.label+'</div>'+rows+'</div>';
+  });
+})();
+
+/* ══════════ RENDER: KEY MATCHES ══════════ */
+(function(){
+  var el=document.getElementById('qrList');
+  el.innerHTML=QR.map(function(m){
+    var d=new Date(m.date.replace('–','-').split('–')[0]+' 2026'),dn=isNaN(d)?'':DAYS[d.getDay()];
+    return '<div class="qr-item'+(m.key?' key':'')+'"><div class="qr-date">'+(dn?dn+'<br>':'')+m.date+'</div><div><div class="qr-match">'+m.match+'</div><div class="qr-venue">'+m.venue+'</div></div><div class="qr-time" data-qist="'+m.istT+'">'+m.istT+'</div></div>';
+  }).join('');
+})();
+
+/* ══════════ RENDER: VENUES ══════════ */
+(function(){
+  document.getElementById('venueGrid').innerHTML=VENUES.map(function(v,i){return '<div class="vcard"><div class="vnum">'+(i+1<10?'0'+(i+1):i+1)+'</div><div><div class="vname">'+v.n+'</div><div class="vloc">'+v.c+'</div><div class="vcap">⚽ Capacity: '+v.cap+'</div></div></div>';}).join('');
+})();
+
+/* ══════════ SEARCH ══════════ */
+function doSearch(q){
+  var c=document.getElementById('si-count'),r=document.getElementById('si-results');
+  q=q.trim().toLowerCase();
+  if(!q){c.textContent='';r.innerHTML='';return;}
+  var res=allM.filter(function(m){return m.hn.toLowerCase().indexOf(q)>=0||m.an.toLowerCase().indexOf(q)>=0;});
+  c.textContent=res.length+' match'+(res.length!==1?'es':'')+' found for "'+q+'"';
+  r.innerHTML=res.length?res.map(function(m){return mkCard(m,m.group);}).join(''):'<div class="no-match"><div style="font-size:40px;margin-bottom:10px">🔍</div><div style="font-family:\'Barlow Condensed\',sans-serif;font-size:15px;color:var(--muted2)">No matches for "'+q+'"<br>Try: Brazil, England, Argentina</div></div>';
+}
+
+/* ══════════ MY TEAM ══════════ */
+var _KIT={'Mexico':['#006847','#CE1126'],'South Africa':['#007A4D','#FFB81C'],'South Korea':['#CE1126','#003478'],'Czechia':['#D7141A','#FFFFFF'],'Canada':['#FF0000','#FFFFFF'],'Bosnia & Herz.':['#002395','#FFCC00'],'Qatar':['#8D1B3D','#FFFFFF'],'Switzerland':['#FF0000','#FFFFFF'],'Brazil':['#FFDF00','#009C3B'],'Morocco':['#C1272D','#006233'],'Haiti':['#00209F','#D21034'],'Scotland':['#003F87','#FFFFFF'],'USA':['#002868','#BF0A30'],'Paraguay':['#D52B1E','#FFFFFF'],'Australia':['#FFCD00','#00843D'],'Türkiye':['#E30A17','#FFFFFF'],'Germany':['#DDDDDD','#000000'],'Curaçao':['#003DA5','#F9A12E'],'Ivory Coast':['#F47B20','#009A44'],'Ecuador':['#FFD100','#003893'],'Netherlands':['#FF6600','#FFFFFF'],'Japan':['#003DA5','#FFFFFF'],'Sweden':['#006AA7','#FECC02'],'Tunisia':['#E70013','#FFFFFF'],'Belgium':['#EF3340','#000000'],'Egypt':['#CE1126','#FFFFFF'],'Iran':['#239F40','#FFFFFF'],'New Zealand':['#111111','#FFFFFF'],'Spain':['#AA151B','#F1BF00'],'Cape Verde':['#003893','#CF2027'],'Saudi Arabia':['#006C35','#FFFFFF'],'Uruguay':['#75AADB','#FFFFFF'],'France':['#002395','#FFFFFF'],'Senegal':['#00853F','#FDEF42'],'Iraq':['#007A3D','#CE1126'],'Norway':['#EF2B2D','#002868'],'Argentina':['#74ACDF','#FFFFFF'],'Algeria':['#006233','#FFFFFF'],'Austria':['#ED2939','#FFFFFF'],'Jordan':['#007A3D','#FFFFFF'],'Portugal':['#006600','#FF0000'],'DR Congo':['#007FFF','#FFCC00'],'Uzbekistan':['#1EB53A','#FFFFFF'],'Colombia':['#FCD116','#003087'],'England':['#FFFFFF','#003078'],'Croatia':['#FF0000','#FFFFFF'],'Ghana':['#006B3F','#FCD116'],'Panama':['#DA121A','#003893']};
+function _jsy(c1,c2,sz){sz=sz||'38';return '<svg viewBox="0 0 50 56" width="'+sz+'" height="'+sz+'" xmlns="http://www.w3.org/2000/svg"><path d="M2,13 L12,2 L20,16 L8,24Z" fill="'+c1+'"/><path d="M48,13 L38,2 L30,16 L42,24Z" fill="'+c1+'"/><path d="M8,22 L8,53 Q8,55 10,55 L40,55 Q42,55 42,53 L42,22 L30,16 L20,16Z" fill="'+c1+'"/><path d="M20,16 Q25,22 30,16 Q30,6 25,6 Q20,6 20,16Z" fill="'+c2+'" opacity="0.9"/><text x="25" y="42" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.3)" font-weight="900" font-family="Arial Black,sans-serif">11</text></svg>';}
+
+var TEAM_LIST=[];
+Object.keys(GROUPS).forEach(function(g){GROUPS[g].teams.forEach(function(t){TEAM_LIST.push(Object.assign({},t,{group:g}));});});
+TEAM_LIST.sort(function(a,b){return a.n.localeCompare(b.n);});
+
+function renderMyTeam(){
+  var el=document.getElementById('myTeamContent');
+  if(!favTeam){
+    var rows=TEAM_LIST.map(function(t,i){
+      var k=_KIT[t.n]||['#003087','#FFFFFF'];
+      return '<button class="fbtn" onclick="setFavIdx('+i+')" title="'+t.n+'">'+_jsy(k[0],k[1],'34')+'<span style="font-size:16px;line-height:1">'+t.f+'</span><span style="font-size:10px;white-space:normal;text-align:center;line-height:1.2">'+t.n+'</span></button>';
+    }).join('');
+    el.innerHTML='<div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden"><div style="padding:10px 14px;font-family:\'Barlow Condensed\',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;border-bottom:1px solid var(--border);background:rgba(0,230,118,0.04)">⭐ Tap any team to follow their World Cup journey</div><div class="fgrid">'+rows+'</div></div>';
+  } else {
+    var t=favTeam,k=_KIT[t.n]||['#003087','#FFFFFF'];
+    var gData=GROUPS[t.group];
+    var matches=gData?gData.matches.filter(function(m){return m.hn===t.n||m.an===t.n;}):[]; 
+    var rivals=gData?gData.teams.filter(function(o){return o.n!==t.n;}):[]; 
+    var hc=(k[0]==='#FFFFFF'||k[0]==='#DDDDDD')?'var(--gold)':k[0];
+    var rivalHtml=rivals.map(function(o){return '<div style="display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:5px 10px;font-family:\'Barlow Condensed\',sans-serif;font-weight:700;font-size:12px"><span style="font-size:18px">'+o.f+'</span>'+o.n+'</div>';}).join('');
+    el.innerHTML='<div class="fav-hd" style="background:linear-gradient(135deg,'+k[0]+'30,'+k[0]+'10);border:1px solid '+k[0]+'44"><span style="font-size:52px;display:block;margin-bottom:6px;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.5))">'+t.f+'</span>'+_jsy(k[0],k[1],'50')+'<div style="font-family:\'Bebas Neue\',sans-serif;font-size:32px;letter-spacing:4px;color:'+hc+';margin-top:8px">'+t.n+'</div><div style="font-size:11px;color:var(--muted2);letter-spacing:2px;text-transform:uppercase;font-family:\'Barlow Condensed\',sans-serif;font-weight:600;margin:4px 0 12px">Group '+t.group+' · '+matches.length+' Matches</div><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:12px">'+rivalHtml+'</div><button style="background:none;border:1px solid var(--border);border-radius:8px;padding:7px 16px;font-family:\'Barlow Condensed\',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;color:var(--muted2);cursor:pointer;text-transform:uppercase" onclick="clearFav()">✕ Change Team</button></div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:17px;letter-spacing:3px;color:var(--muted2);margin-bottom:10px">ALL '+t.n.toUpperCase()+' FIXTURES</div>'+matches.map(function(m){return mkCard(m,t.group);}).join('');
+  }
+}
+function setFavIdx(i){
+  favTeam=TEAM_LIST[i];
+  try{localStorage.setItem('wc26fav',JSON.stringify(favTeam));}catch(e){}
+  renderMyTeam();
+  setTimeout(function(){document.getElementById('myTeamContent').scrollIntoView({behavior:'smooth',block:'start'});},50);
+}
+function clearFav(){
+  favTeam=null;
+  try{localStorage.removeItem('wc26fav');}catch(e){}
+  renderMyTeam();
+}
+renderMyTeam();
+
+/* ══════════ FACTS CAROUSEL ══════════ */
+function renderFact(idx){
+  factIdx=(idx+FACTS.length)%FACTS.length;
+  var f=FACTS[factIdx],card=document.getElementById('factCard');
+  card.setAttribute('data-num',factIdx<9?'0'+(factIdx+1):''+(factIdx+1));
+  card.innerHTML='<span class="fact-e">'+f.e+'</span><div class="fact-t">'+f.t+'</div><div class="fact-b">'+f.b+'</div>';
+  document.querySelectorAll('.fdot').forEach(function(d,i){d.classList.toggle('active',i===factIdx);});
+}
+function nextFact(){renderFact(factIdx+1);resetFT();}
+function prevFact(){renderFact(factIdx-1);resetFT();}
+function resetFT(){clearInterval(factTimer);factTimer=setInterval(function(){renderFact(factIdx+1);},6000);}
+(function(){
+  var dots=document.getElementById('factDots');
+  dots.innerHTML=FACTS.map(function(_,i){return '<button class="fdot'+(i===0?' active':'')+'" onclick="renderFact('+i+');resetFT()"></button>';}).join('');
+  document.getElementById('allFacts').innerHTML=FACTS.map(function(f){return '<div class="fact-mini"><span class="fm-i">'+f.e+'</span><div class="fm-t"><strong style="color:var(--text);font-family:\'Barlow Condensed\',sans-serif;font-weight:700;letter-spacing:.5px">'+f.t+'.</strong> '+f.b+'</div></div>';}).join('');
+  renderFact(0);resetFT();
+})();
+
+/* ══════════ COUNTDOWN ══════════ */
+(function(){
+  var KICK=new Date('2026-06-11T19:00:00Z'),END=new Date('2026-07-19T23:59:00Z');
+  var dEl=document.getElementById('cd-d'),hEl=document.getElementById('cd-h'),mEl=document.getElementById('cd-m'),sEl=document.getElementById('cd-s'),msgEl=document.getElementById('cd-msg');
+  function tick(){
+    var now=new Date();
+    if(now>END){msgEl.textContent='🏆 FIFA World Cup 2026 Complete';document.getElementById('countdown').innerHTML='<div style="padding:16px 24px;font-family:\'Bebas Neue\',sans-serif;font-size:28px;color:var(--gold);letter-spacing:3px">TOURNAMENT OVER</div>';return;}
+    if(now>=KICK) msgEl.innerHTML='<span class="cd-live">🔴 TOURNAMENT IN PROGRESS</span>';
+    var rem=(now>=KICK?END:KICK)-now;
+    dEl.textContent=Math.floor(rem/86400000);
+    hEl.textContent=(''+(Math.floor((rem%86400000)/3600000))).padStart(2,'0');
+    mEl.textContent=(''+(Math.floor((rem%3600000)/60000))).padStart(2,'0');
+    sEl.textContent=(''+(Math.floor((rem%60000)/1000))).padStart(2,'0');
+  }
+  tick();setInterval(tick,1000);
+})();
+
+/* ══════════ CLICK DELEGATION — fixes Match 1, 2 and ALL matches ══════════
+   Single handler. Works from EVERY tab: Groups, By Date, Search, My Team,
+   Today, Key Matches — all identical, consistent behaviour.  */
+document.addEventListener('click',function(e){
+  var card=e.target.closest('.mc');
+  if(!card) return;
+  var panel=card.querySelector('.mc-detail');
+  if(!panel) return;
+  if(e.target.closest('button')) return;
+  document.querySelectorAll('.mc-detail.open').forEach(function(p){if(p!==panel)p.classList.remove('open');});
+  panel.classList.toggle('open');
+});
+
+/* ══════════ NAVIGATION ══════════ */
+function showTab(id,btn){
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+  document.querySelectorAll('.nb').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  document.getElementById('sh').scrollIntoView({behavior:'smooth',block:'start'});
+  if(id==='today') renderToday();
+}
+function showGroup(g,btn){
+  document.querySelectorAll('.gpanel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('#groupTabs .gtab').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('gp-'+g).classList.add('active');
+  btn.classList.add('active');
+}
+function showKO(k,btn){
+  document.querySelectorAll('.gpanel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('#koTabs .gtab').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('ko-'+k).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ══════════ PARTICLES ══════════ */
+(function(){
+  var pc=document.getElementById('ptcls'),f=document.createDocumentFragment();
+  for(var i=0;i<18;i++){var p=document.createElement('div');p.className='particle';p.style.cssText='left:'+Math.random()*100+'%;animation-delay:'+Math.random()*15+'s;animation-duration:'+(10+Math.random()*12)+'s;opacity:'+(0.15+Math.random()*0.3);f.appendChild(p);}
+  pc.appendChild(f);
+})();
+
+/* ══════════ INIT ══════════ */
+if(currentTZ==='GCC'){
+  document.getElementById('btn-ist').classList.remove('active');
+  document.getElementById('btn-gcc').classList.add('active');
+  document.getElementById('tz-badge').textContent='⚽ All Times in Gulf Standard Time (GCC)';
+}
+renderToday();
+</script>
+</body>
+</html>

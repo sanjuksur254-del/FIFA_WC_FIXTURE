@@ -3,27 +3,662 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="theme-color" content="#122c1e" />
+    <meta name="theme-color" content="#0e291d" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="apple-touch-icon" href="https://img.icons8.com/color/192/football.png" />
-    <title>FIFA World Cup 2026 Fixture Companion</title>
-  </head>
-  <body class="bg-[#050b08] text-gray-100 overflow-x-hidden">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="icon-512.png.png" />
+    <title>FIFA World Cup 2026 Companion</title>
+    <!-- Google Fonts & Tailwind CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').then((reg) => {
-            console.log('SW Registered successfully:', reg.scope);
-          }).catch((err) => {
-            console.warn('SW registration failed:', err);
-          });
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Outfit', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #050b08;
+        color: #f3f4f6;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .brand-glow {
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
+
+    <!-- APP HEADER -->
+    <header class="relative bg-[#0a1711] border-b border-[#0e291d] py-5 px-4">
+      <div class="max-w-4xl mx-auto flex flex-col gap-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="p-2.5 bg-[#0e291d] border border-emerald-500/20 rounded-xl">
+              <span class="text-2xl">🏆</span>
+            </div>
+            <div>
+              <span class="text-[9px] font-mono tracking-widest text-[#f59e0b] bg-emerald-950/40 px-2 py-0.5 rounded-full border border-yellow-500/20 uppercase font-bold">Official Fixtures App</span>
+              <h1 class="font-display text-xl sm:text-2xl font-black text-white mt-0.5">FIFA WORLD CUP <span class="text-[#f59e0b]">2026</span></h1>
+            </div>
+          </div>
+          <button id="nav-favs-btn" onclick="toggleFavsOnly()" class="flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs font-bold border border-emerald-500/20 bg-[#0e291d]">
+            <span>★</span> <span class="hidden xs:inline">Favorites</span> (<span id="favs-counter">0</span>)
+          </button>
+        </div>
+
+        <!-- Timezone Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-3 bg-[#0e291d]/40 rounded-xl p-3 border border-[#0e291d]">
+          <div class="flex items-center gap-1.5">
+            <span class="text-xs text-gray-400">🌍 Timezone:</span>
+            <button id="tz-ist-btn" onclick="switchTimezone('IST')" class="py-1 px-3 rounded-lg text-xs font-black bg-emerald-500 text-[#0a1711]">IST</button>
+            <button id="tz-gcc-btn" onclick="switchTimezone('GCC')" class="py-1 px-3 rounded-lg text-xs font-black bg-[#050b08] text-gray-400">GCC</button>
+          </div>
+          <div class="text-xs text-gray-300 flex items-center gap-1.5">
+            <span>🕒 Simulated Time:</span>
+            <strong id="header-clock" class="font-mono text-emerald-400">June 12, 12:30 AM (IST)</strong>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- TABS -->
+    <nav class="bg-[#0a1711] border-b border-[#0e291d] sticky top-0 z-40">
+      <div class="max-w-4xl mx-auto px-4 flex">
+        <button onclick="switchTab('fixtures')" id="tab-fixtures" class="flex-1 text-center py-3.5 border-b-2 border-emerald-500 text-emerald-400 font-extrabold text-sm uppercase tracking-wider">⚽ Match Fixtures</button>
+        <button onclick="switchTab('hub')" id="tab-hub" class="flex-1 text-center py-3.5 border-b-2 border-transparent text-gray-400 font-bold text-sm uppercase tracking-wider">🌟 World Cup Hub</button>
+        <button onclick="switchTab('groups')" id="tab-groups" class="flex-1 text-center py-3.5 border-b-2 border-transparent text-gray-400 font-bold text-sm uppercase tracking-wider">📋 Groups (A-L)</button>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow max-w-4xl w-full mx-auto p-4 flex flex-col gap-5">
+      
+      <!-- SUB-VIEW 1: MATCH FIXTURES -->
+      <div id="view-fixtures" class="flex flex-col gap-4">
+        <!-- Search, filters and toggles -->
+        <div class="bg-[#0a1711] p-4 rounded-xl border border-[#0e291d] flex flex-col gap-3">
+          <input type="text" id="search-box" oninput="renderApp()" placeholder="🔍 Search teams (e.g. Brazil), cities (e.g. Toronto), groups..." class="w-full text-sm py-2.5 px-4 bg-[#050b08] text-white border border-[#0e291d] rounded-lg focus:outline-none focus:border-emerald-500/50" />
+          
+          <div class="flex flex-wrap items-center justify-between gap-2.5">
+            <button onclick="toggleCompletedMatches()" id="completed-btn" class="flex items-center gap-1.5 py-1.5 px-3 border border-[#0e291d] bg-[#050b08] rounded-xl text-xs font-semibold text-gray-300 hover:border-emerald-500/30">
+              <span id="completed-icon">👁️</span> <span id="completed-text">Show Completed Matches</span>
+            </button>
+            <span id="match-count-badge" class="font-mono text-xs text-gray-500">Showing 72 matches</span>
+          </div>
+        </div>
+
+        <!-- Live Matches alert bar -->
+        <div id="live-alert" class="hidden bg-gradient-to-r from-emerald-950/50 via-emerald-800/20 to-emerald-950/50 border border-emerald-500/45 p-3 rounded-xl flex items-center justify-between animate-pulse">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span class="font-display font-medium text-xs text-white uppercase tracking-wider">Matches are Live Currently! Code & Scores updated</span>
+          </div>
+          <span class="bg-emerald-500 text-black px-2 py-0.5 rounded text-[10px] font-black">LIVE</span>
+        </div>
+
+        <!-- Match Cards Target Container -->
+        <div id="matches-list" class="flex flex-col gap-4"></div>
+      </div>
+
+      <!-- SUB-VIEW 2: WORLD CUP HUB -->
+      <div id="view-hub" class="hidden flex flex-col gap-6">
+        <!-- Speciality of 2026 -->
+        <div class="bg-[#0a1711] border border-[#0e291d] p-5 rounded-2xl">
+          <h2 class="font-display font-black text-[#f59e0b] text-base mb-3 flex items-center gap-2">🏆 SPECIALITY OF 2026 WORLD CUP</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-[#050b08] p-3.5 border border-[#0e291d] rounded-xl text-xs">
+              <strong class="text-white block mb-1">🔥 48 Teams Expansion</strong>
+              Increased from 32 to 48 nations! Introducing 12 groups of 4 teams for an unprecedented festival atmosphere.
+            </div>
+            <div class="bg-[#050b08] p-3.5 border border-[#0e291d] rounded-xl text-xs">
+              <strong class="text-emerald-400 block mb-1">🗺️ Three Host Nations</strong>
+              Jointly staged in USA, Mexico, and Canada. Highlighting Mexico as the first nation to host 3 Men's World Cups.
+            </div>
+            <div class="bg-[#050b08] p-3.5 border border-[#0e291d] rounded-xl text-xs">
+              <strong class="text-yellow-400 block mb-1">⚡ Round of 32 Addition</strong>
+              The top 2 teams from each group plus the 8 best 3rd-placed teams will trigger a historic new knockout stage.
+            </div>
+          </div>
+        </div>
+
+        <!-- Must-Watch Matches -->
+        <div class="bg-[#0a1711] border border-[#0e291d] p-5 rounded-2xl">
+          <h2 class="font-display font-black text-red-400 text-base mb-1.5 flex items-center gap-2">🔥 MUST-WATCH GROUP FIXTURES</h2>
+          <p class="text-xs text-gray-400 mb-4">Click Locate Match to immediately find and expand these exciting events in your fixtures tab!</p>
+          <div class="flex flex-col gap-3">
+            <div class="bg-[#050b08] border border-[#0e291d] p-4 rounded-xl flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+              <div class="text-xs">
+                <span class="text-[10px] uppercase font-mono text-[#f59e0b] bg-[#0e291d] px-2 py-0.5 rounded border border-yellow-500/20">Match #1 • Opening Game</span>
+                <h4 class="font-bold text-white text-sm my-1">🇲🇽 Mexico vs 🇿🇦 South Africa</h4>
+                <p class="text-gray-300">The grand tournament opener inside Mexico City's historic Estadio Azteca before 100,000 fanatical supporters.</p>
+              </div>
+              <button onclick="locateAndHighlight(1)" class="py-1 px-4 bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-black rounded-lg shrink-0">Locate Match</button>
+            </div>
+            <div class="bg-[#050b08] border border-[#0e291d] p-4 rounded-xl flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+              <div class="text-xs">
+                <span class="text-[10px] uppercase font-mono text-emerald-400 bg-[#0e291d] px-2 py-0.5 rounded border border-emerald-500/20">Match #6 • Heavyweight Clash</span>
+                <h4 class="font-bold text-white text-sm my-1">🇧🇷 Brazil vs 🇲🇦 Morocco</h4>
+                <p class="text-gray-300">A glamorous technical collision featuring South American samba magic versus Africa's defensive heroes.</p>
+              </div>
+              <button onclick="locateAndHighlight(6)" class="py-1 px-4 bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-black rounded-lg shrink-0">Locate Match</button>
+            </div>
+            <div class="bg-[#050b08] border border-[#0e291d] p-4 rounded-xl flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+              <div class="text-xs">
+                <span class="text-[10px] uppercase font-mono text-red-400 bg-[#0e291d] px-2 py-0.5 rounded border border-red-500/20">Match #17 • Redemption Clash</span>
+                <h4 class="font-bold text-white text-sm my-1">🇫🇷 France vs 🇸🇳 Senegal</h4>
+                <p class="text-gray-300">Replaying the historic 2002 upset. France seeks revenge while Senegal looks to claim giant killer status again.</p>
+              </div>
+              <button onclick="locateAndHighlight(17)" class="py-1 px-4 bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-black rounded-lg shrink-0">Locate Match</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Beginner Facts & Guide -->
+        <div class="bg-[#0a1711] border border-[#0e291d] p-5 rounded-2xl">
+          <h2 class="font-display font-black text-emerald-400 text-base mb-3 flex items-center gap-2">🔰 FOOTBALL BEGINNER SIMPLE GUIDE</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+            <div class="bg-[#050b08] p-3.5 border border-[#0e291d] rounded-xl flex flex-col gap-1.5">
+              <h4 class="font-bold text-white uppercase text-emerald-400">🏁 The Offside Rule</h4>
+              <p class="text-gray-300">An attacker cannot stay closer to the goal line than the second-to-last opponent player (usually the last defender) at the exact split-second the ball is passed forward.</p>
+            </div>
+            <div class="bg-[#050b08] p-3.5 border border-[#0e291d] rounded-xl flex flex-col gap-1.5">
+              <h4 class="font-bold text-white uppercase text-yellow-400">⏱️ Match Duration</h4>
+              <p class="text-gray-300">Games last 90 minutes. In Group Stages, results can end in a draw. In knockout rounds, a draw triggers 30-minutes extra time, then a Penalty Shootout.</p>
+            </div>
+            <div class="bg-[#050b08] p-3.5 border border-[#0e291d] rounded-xl flex flex-col gap-1.5">
+              <h4 class="font-bold text-white uppercase text-red-400">🟨 Discipline Cards</h4>
+              <p class="text-gray-300">Yellow is an official warning. Two yellows equal a Red (ejection). Red carded players are kicked off immediately, leaving their team to play at a player disadvantage.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interesting Trivia -->
+        <div class="bg-[#0a1711] border border-[#0e291d] p-5 rounded-2xl">
+          <h2 class="font-display font-black text-[#f59e0b] text-base mb-3 flex items-center gap-2">✨ INTERESTING TRIVIA</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-gray-300">
+            <div class="bg-[#050b08] p-3.5 border border-[#0e291d] rounded-xl">
+              <span class="text-[10px] text-emerald-400 font-mono font-bold block mb-1">🏔️ ALTITUDE STAGE</span>
+              Estadio Azteca in Mexico City sits at 2,240 meters above sea level. This high altitude makes breathing very hard for visiting players, and makes the soccer ball fly faster.
+            </div>
+            <div class="bg-[#050b08] p-3.5 border border-[#0e291d] rounded-xl">
+              <span class="text-[10px] text-yellow-400 font-mono font-bold block mb-1">✈️ MASSIVE TRAVEL</span>
+              The physical distance between venues is the largest in history! Some groups span from Vancouver in cold Canada down containing flights to sunny, humid Miami.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-VIEW 3: GROUPS TRAY -->
+      <div id="view-groups" class="hidden grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-3">
+        <!-- Script injects group cards instantly -->
+      </div>
+    </main>
+
+    <!-- FLOATING SIMULATOR TIME-TRAVELLER -->
+    <footer class="bg-[#0a1711] border-t border-[#0e291d] p-3.5 shrink-0">
+      <div class="max-w-4xl mx-auto flex flex-col gap-2">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-mono tracking-wider font-bold text-gray-400 flex items-center gap-1">⏱️ TOURNAMENT TIME SIMULATOR</span>
+          <span id="simulator-status" class="text-[9px] font-mono bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/15">Real Time Clock</span>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center gap-3">
+          <!-- Quick Simulators Buttons -->
+          <div class="flex flex-wrap gap-1.5">
+            <button onclick="setSimulatedPreset('real')" class="text-[10px] bg-emerald-500 text-[#0a1711] px-2.5 py-1 rounded font-bold">💎 Real Clock</button>
+            <button onclick="setSimulatedPreset('day1')" class="text-[10px] bg-[#050b08] text-gray-300 border border-[#0e291d] px-2.5 py-1 rounded font-bold">🚀 day 1 Live</button>
+            <button onclick="setSimulatedPreset('day3')" class="text-[10px] bg-[#050b08] text-gray-300 border border-[#0e291d] px-2.5 py-1 rounded font-bold">🔥 Day 3 Live</button>
+            <button onclick="setSimulatedPreset('end')" class="text-[10px] bg-[#050b08] text-gray-300 border border-[#0e291d] px-2.5 py-1 rounded font-bold">🏆 Completed</button>
+          </div>
+          <!-- Slider manual fine-tune -->
+          <div class="flex-grow flex items-center gap-2 w-full">
+            <span class="text-[10px] font-mono text-gray-400 shrink-0">Fine-tune:</span>
+            <input type="range" id="simulator-slider" min="1781197200000" max="1782752400000" class="flex-grow accent-emerald-500 bg-[#050b08] rounded h-1 cursor-pointer" oninput="manualSliderAdjust(this.value)" />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- CLIENT SCRIPT DATABASE -->
+    <script>
+      // Full 48 Teams Database with Group and Official FIFA Rankings
+      const TEAMS = {
+        MEX: { name: "Mexico", flag: "🇲🇽", ranking: 15, group: "A" },
+        RSA: { name: "South Africa", flag: "🇿🇦", ranking: 59, group: "A" },
+        KOR: { name: "South Korea", flag: "🇰🇷", ranking: 22, group: "A" },
+        CZE: { name: "Czechia", flag: "🇨🇿", ranking: 36, group: "A" },
+        CAN: { name: "Canada", flag: "🇨🇦", ranking: 40, group: "B" },
+        BIH: { name: "Bosnia & Herz.", flag: "🇧🇦", ranking: 74, group: "B" },
+        QAT: { name: "Qatar", flag: "🇶🇦", ranking: 37, group: "B" },
+        SUI: { name: "Switzerland", flag: "🇨🇭", ranking: 19, group: "B" },
+        BRA: { name: "Brazil", flag: "🇧🇷", ranking: 5, group: "C" },
+        MAR: { name: "Morocco", flag: "🇲🇦", ranking: 12, group: "C" },
+        HAI: { name: "Haiti", flag: "🇭🇹", ranking: 90, group: "C" },
+        SCO: { name: "Scotland", flag: "🏴", ranking: 39, group: "C" },
+        USA: { name: "USA", flag: "🇺🇸", ranking: 13, group: "D" },
+        PAR: { name: "Paraguay", flag: "🇵🇾", ranking: 56, group: "D" },
+        AUS: { name: "Australia", flag: "🇦🇺", ranking: 24, group: "D" },
+        TUR: { name: "Türkiye", flag: "🇹🇷", ranking: 26, group: "D" },
+        GER: { name: "Germany", flag: "🇩🇪", ranking: 16, group: "E" },
+        CUW: { name: "Curaçao", flag: "🇨🇼", ranking: 91, group: "E" },
+        CIV: { name: "Ivory Coast", flag: "🇨🇮", ranking: 38, group: "E" },
+        ECU: { name: "Ecuador", flag: "🇪🇨", ranking: 30, group: "E" },
+        NED: { name: "Netherlands", flag: "🇳🇱", ranking: 7, group: "F" },
+        JPN: { name: "Japan", flag: "🇯🇵", ranking: 17, group: "F" },
+        SWE: { name: "Sweden", flag: "🇸🇪", ranking: 28, group: "F" },
+        TUN: { name: "Tunisia", flag: "🇹🇳", ranking: 41, group: "F" },
+        BEL: { name: "Belgium", flag: "🇧🇪", ranking: 3, group: "G" },
+        EGY: { name: "Egypt", flag: "🇪🇬", ranking: 36, group: "G" },
+        IRN: { name: "Iran", flag: "🇮🇷", ranking: 20, group: "G" },
+        NZL: { name: "New Zealand", flag: "🇳🇿", ranking: 104, group: "G" },
+        ESP: { name: "Spain", flag: "🇪🇸", ranking: 1, group: "H" },
+        CPV: { name: "Cape Verde", flag: "🇨🇻", ranking: 65, group: "H" },
+        KSA: { name: "Saudi Arabia", flag: "🇸🇦", ranking: 56, group: "H" },
+        URU: { name: "Uruguay", flag: "🇺🇾", ranking: 11, group: "H" },
+        FRA: { name: "France", flag: "🇫🇷", ranking: 2, group: "I" },
+        SEN: { name: "Senegal", flag: "🇸🇳", ranking: 18, group: "I" },
+        IRQ: { name: "Iraq", flag: "🇮🇶", ranking: 58, group: "I" },
+        NOR: { name: "Norway", flag: "🇳🇴", ranking: 47, group: "I" },
+        ARG: { name: "Argentina", flag: "🇦🇷", ranking: 1, group: "J" },
+        ALG: { name: "Algeria", flag: "🇩🇿", ranking: 43, group: "J" },
+        AUT: { name: "Austria", flag: "🇦🇹", ranking: 25, group: "J" },
+        JOR: { name: "Jordan", flag: "🇯🇴", ranking: 71, group: "J" },
+        POR: { name: "Portugal", flag: "🇵🇹", ranking: 6, group: "K" },
+        COD: { name: "DR Congo", flag: "🇨🇩", ranking: 64, group: "K" },
+        UZB: { name: "Uzbekistan", flag: "🇺🇿", ranking: 66, group: "K" },
+        COL: { name: "Colombia", flag: "🇨🇴", ranking: 12, group: "K" },
+        ENG: { name: "England", flag: "🏴", ranking: 4, group: "L" },
+        CRO: { name: "Croatia", flag: "🇭🇷", ranking: 10, group: "L" },
+        GHA: { name: "Ghana", flag: "🇬🇭", ranking: 64, group: "L" },
+        PAN: { name: "Panama", flag: "🇵🇦", ranking: 45, group: "L" }
+      };
+
+      const STAR_PLAYERS = {
+        MEX: { name: "Santiago Giménez", position: "Forward", club: "Feyenoord", desc: "Surgical box striker." },
+        RSA: { name: "Percy Tau", position: "Forward", club: "Al Ahly", desc: "Electric speed winger." },
+        KOR: { name: "Heung-min Son", position: "Forward", club: "Tottenham", desc: "Laser dynamic finisher." },
+        CZE: { name: "Patrik Schick", position: "Forward", club: "Leverkusen", desc: "Elite target powerhouse." },
+        CAN: { name: "Alphonso Davies", position: "Defender", club: "Bayern Munich", desc: "Blistering acceleration." },
+        USA: { name: "Christian Pulisic", position: "Forward", club: "AC Milan", desc: "Captain America dribbler." },
+        BRA: { name: "Vinicius Jr", position: "Forward", club: "Real Madrid", desc: "Ballond'Or global candidate." },
+        MAR: { name: "Achraf Hakimi", position: "Right Back", club: "PSG", desc: "World-class attacking back." },
+        GER: { name: "Jamal Musiala", position: "Midfielder", club: "Bayern Munich", desc: "Hyperspace playmaker." },
+        ESP: { name: "Lamine Yamal", position: "Forward", club: "Barcelona", desc: "Mesmerizing young wizard." },
+        FRA: { name: "Kylian Mbappé", position: "Forward", club: "Real Madrid", desc: "The fastest goalscorer." },
+        ARG: { name: "Lionel Messi", position: "Forward", club: "Inter Miami", desc: "The greatest player ever." },
+        NOR: { name: "Erling Haaland", position: "Forward", club: "Man City", desc: "Terminator scoring cyborg." },
+        POR: { name: "Cristiano Ronaldo", position: "Forward", club: "Al Nassr", desc: "Legendary historic machine." },
+        ENG: { name: "Jude Bellingham", position: "Midfielder", club: "Real Madrid", desc: "Absolute superstar dynamo." }
+      };
+
+      const MATCH_NARRATIVES = {
+        1: "Opening game is at Estadio Azteca, Mexico City. Mexico leverages high altitude against South Africa's pace.",
+        2: "South Korea's high-speed breaking wingers face off against Czechia's heavily secure physical low defensive block.",
+        3: "Canada's historic host opener! Driven by Alphonso Davies, they seek a first ever World Cup victory.",
+        4: "USA debuts in SoFi Stadium high stakes, where Pulisic's tactical runs look to slice Paraguay's defense.",
+        5: "Switzerland's premium structural engine goes up against Qatar's high-tempo passing strategy in Group B.",
+        6: "Samba giants Brazil face historical Atlas Lions of Morocco. Technical masterclass with thrilling crowd support.",
+        7: "Scotland faces Haiti in Foxborough in a crucial midfield possession duel.",
+        8: "Australian physical intensity battles spectacular Turkish teenage talent Arda Güler's tactical playmaking.",
+        10: "Breathtaking tactical matchup. Netherlands possession system encounters Japan's lightning press.",
+        15: "Uruguay battles a disciplined Saudi Arabia, out to prove their elite upset capability.",
+        17: "Bespoke historical rematch of 2002 opening day where underdog Senegal upset tournament favorites France.",
+        21: "Ronaldo begins his historic campaign! Portugal faces physical strength of DR Congo in Houston.",
+        22: "Heavyweight blockbuster! Starboy Jude Bellingham leads England against Modric's Croatia midfield.",
+        61: "Absolute box office! Erling Haaland of Norway faces off with Kylian Mbappé of France directly.",
+        64: "Spain's beautiful technical passing game clashes with Uruguay's defensive force masterfully."
+      };
+
+      const FIXTURES_RAW = [
+        { id: 1, group: "A", home: "MEX", away: "RSA", time: "2026-06-11T19:00:00Z", city: "Mexico City", hScore: 2, aScore: 1 },
+        { id: 2, group: "A", home: "KOR", away: "CZE", time: "2026-06-12T02:00:00Z", city: "Zapopan", hScore: 1, aScore: 1 },
+        { id: 3, group: "B", home: "CAN", away: "BIH", time: "2026-06-12T19:00:00Z", city: "Toronto", hScore: 2, aScore: 0 },
+        { id: 4, group: "D", home: "USA", away: "PAR", time: "2026-06-13T01:00:00Z", city: "Los Angeles", hScore: 1, aScore: 0 },
+        { id: 5, group: "B", home: "QAT", away: "SUI", time: "2026-06-13T19:00:00Z", city: "Santa Clara", hScore: 1, aScore: 2 },
+        { id: 6, group: "C", home: "BRA", away: "MAR", time: "2026-06-13T22:00:00Z", city: "New Jersey", hScore: 3, aScore: 1 },
+        { id: 7, group: "C", home: "HAI", away: "SCO", time: "2026-06-14T01:00:00Z", city: "Foxborough", hScore: 0, aScore: 2 },
+        { id: 8, group: "D", home: "AUS", away: "TUR", time: "2026-06-14T04:00:00Z", city: "Vancouver", hScore: 1, aScore: 1 },
+        { id: 10, group: "F", home: "NED", away: "JPN", time: "2026-06-14T20:00:00Z", city: "Arlington", hScore: 2, aScore: 2 },
+        { id: 15, group: "H", home: "KSA", away: "URU", time: "2026-06-15T22:00:00Z", city: "Miami", hScore: 1, aScore: 2 },
+        { id: 17, group: "I", home: "FRA", away: "SEN", time: "2026-06-16T19:00:00Z", city: "New Jersey", hScore: 1, aScore: 1 },
+        { id: 21, group: "K", home: "POR", away: "COD", time: "2026-06-17T17:00:00Z", city: "Houston", hScore: 2, aScore: 0 },
+        { id: 22, group: "L", home: "ENG", away: "CRO", time: "2026-06-17T20:00:00Z", city: "Arlington", hScore: 1, aScore: 0 },
+        { id: 61, group: "I", home: "NOR", away: "FRA", time: "2026-06-26T19:00:00Z", city: "Foxborough", hScore: 2, aScore: 3 },
+        { id: 64, group: "H", home: "URU", away: "ESP", time: "2026-06-27T00:00:00Z", city: "Zapopan", hScore: 1, aScore: 2 }
+      ];
+
+      // App State variables
+      let timezone = localStorage.getItem('man_tz') || 'IST';
+      let simulatedTime = new Date('2026-06-13T03:00:00Z'); // Default Start June 13 AM Live Simulation
+      let activeTab = 'fixtures';
+      let showCompleted = false;
+      let expMatchId = null;
+      let favedTeams = JSON.parse(localStorage.getItem('fav_t') || '[]');
+      let favedMatches = JSON.parse(localStorage.getItem('fav_m') || '[]');
+      let showFavsOnly = false;
+
+      // Init and Service Worker registry
+      window.onload = () => {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('service-worker.js').catch(err => console.log('SW registration issue:', err));
+        }
+        switchTimezone(timezone);
+        renderGroups();
+        renderApp();
+      };
+
+      function switchTab(tab) {
+        activeTab = tab;
+        document.getElementById('tab-fixtures').className = tab === 'fixtures' ? 'flex-1 text-center py-3.5 border-b-2 border-emerald-500 text-emerald-400 font-extrabold text-sm uppercase' : 'flex-1 text-center py-3.5 border-b-2 border-transparent text-gray-400 font-bold text-sm uppercase';
+        document.getElementById('tab-hub').className = tab === 'hub' ? 'flex-1 text-center py-3.5 border-b-2 border-emerald-500 text-emerald-400 font-extrabold text-sm uppercase' : 'flex-1 text-center py-3.5 border-b-2 border-transparent text-gray-400 font-bold text-sm uppercase';
+        document.getElementById('tab-groups').className = tab === 'groups' ? 'flex-1 text-center py-3.5 border-b-2 border-emerald-500 text-emerald-400 font-extrabold text-sm uppercase' : 'flex-1 text-center py-3.5 border-b-2 border-transparent text-gray-400 font-bold text-sm uppercase';
+        
+        document.getElementById('view-fixtures').className = tab === 'fixtures' ? 'flex flex-col gap-4' : 'hidden';
+        document.getElementById('view-hub').className = tab === 'hub' ? 'flex flex-col gap-6' : 'hidden';
+        document.getElementById('view-groups').className = tab === 'groups' ? 'grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-3' : 'hidden';
+      }
+
+      function switchTimezone(tz) {
+        timezone = tz;
+        localStorage.setItem('man_tz', tz);
+        document.getElementById('tz-ist-btn').className = tz === 'IST' ? 'py-1 px-3 rounded-lg text-xs font-black bg-emerald-500 text-[#0a1711]' : 'py-1 px-3 rounded-lg text-xs font-black bg-[#050b08] text-gray-400';
+        document.getElementById('tz-gcc-btn').className = tz === 'GCC' ? 'py-1 px-3 rounded-lg text-xs font-black bg-emerald-500 text-[#0a1711]' : 'py-1 px-3 rounded-lg text-xs font-black bg-[#050b08] text-gray-400';
+        updateClock();
+        renderApp();
+      }
+
+      function setSimulatedPreset(preset) {
+        if (preset === 'real') {
+          simulatedTime = new Date();
+          document.getElementById('simulator-status').innerText = "Real Time Clock";
+        } else if (preset === 'day1') {
+          simulatedTime = new Date('2026-06-11T21:00:00Z');
+          document.getElementById('simulator-status').innerText = "Day 1 Live Match";
+        } else if (preset === 'day3') {
+          simulatedTime = new Date('2026-06-13T22:30:00Z');
+          document.getElementById('simulator-status').innerText = "Day 3 Live Match";
+        } else {
+          simulatedTime = new Date('2026-06-30T12:00:00Z');
+          document.getElementById('simulator-status').innerText = "All Completed";
+        }
+        document.getElementById('simulator-slider').value = simulatedTime.getTime();
+        updateClock();
+        renderApp();
+      }
+
+      function manualSliderAdjust(val) {
+        simulatedTime = new Date(parseInt(val));
+        document.getElementById('simulator-status').innerText = "Simulated Slider Time";
+        updateClock();
+        renderApp();
+      }
+
+      function updateClock() {
+        const tzKey = timezone === 'GCC' ? 'Asia/Dubai' : 'Asia/Kolkata';
+        const formatted = simulatedTime.toLocaleDateString('en-US', {
+          timeZone: tzKey, weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true
         });
+        document.getElementById('header-clock').innerText = `${formatted} (${timezone})`;
+      }
+
+      function toggleCompletedMatches() {
+        showCompleted = !showCompleted;
+        document.getElementById('completed-icon').innerText = showCompleted ? '👁️‍🗨️' : '👁️';
+        document.getElementById('completed-text').innerText = showCompleted ? 'Hide Completed Matches' : 'Show Completed Matches';
+        renderApp();
+      }
+
+      function toggleFavsOnly() {
+        showFavsOnly = !showFavsOnly;
+        document.getElementById('nav-favs-btn').className = showFavsOnly ? 'flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs font-bold border border-yellow-500/50 bg-yellow-500/10 text-yellow-400' : 'flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs font-bold border border-emerald-500/20 bg-[#0e291d] text-white';
+        renderApp();
+      }
+
+      function toggleTeamFav(teamCode) {
+        if (favedTeams.includes(teamCode)) {
+          favedTeams = favedTeams.filter(t => t !== teamCode);
+        } else {
+          favedTeams.push(teamCode);
+        }
+        localStorage.setItem('fav_t', JSON.stringify(favedTeams));
+        renderApp();
+      }
+
+      function toggleMatchFav(id) {
+        if (favedMatches.includes(id)) {
+          favedMatches = favedMatches.filter(mId => mId !== id);
+        } else {
+          favedMatches.push(id);
+        }
+        localStorage.setItem('fav_m', JSON.stringify(favedMatches));
+        renderApp();
+      }
+
+      function toggleMatchExpand(id) {
+        expMatchId = (expMatchId === id) ? null : id;
+        renderApp();
+      }
+
+      function locateAndHighlight(id) {
+        switchTab('fixtures');
+        showCompleted = true; // Make sure it is showing
+        renderApp();
+        toggleMatchExpand(id);
+        setTimeout(() => {
+          const el = document.getElementById(`card-${id}`);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            el.style.borderColor = "#f59e0b";
+            setTimeout(() => { el.style.borderColor = "#0e291d"; }, 2500);
+          }
+        }, 300);
+      }
+
+      function renderGroups() {
+        const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
+        let html = '';
+        letters.forEach(g => {
+          let teamsHtml = '';
+          Object.keys(TEAMS).forEach(k => {
+            if (TEAMS[k].group === g) {
+              teamsHtml += `
+                <div class="flex items-center justify-between text-xs py-1 text-gray-300">
+                  <div class="flex items-center gap-1.5">
+                    <span>${TEAMS[k].flag}</span>
+                    <span class="font-semibold">${TEAMS[k].name}</span>
+                  </div>
+                  <span class="text-xs font-mono text-[#f59e0b]">Rank #${TEAMS[k].ranking}</span>
+                </div>
+              `;
+            }
+          });
+          html += `
+            <div class="bg-[#0a1711] border border-[#0e291d] p-4 rounded-xl">
+              <h3 class="text-sm font-display font-black text-[#f59e0b] border-b border-[#0e291d] pb-1.5 mb-2">GROUP ${g}</h3>
+              <div class="flex flex-col gap-1">${teamsHtml}</div>
+            </div>
+          `;
+        });
+        document.getElementById('view-groups').innerHTML = html;
+      }
+
+      function renderApp() {
+        const listDiv = document.getElementById('matches-list');
+        const query = document.getElementById('search-box').value.toLowerCase();
+        
+        let hasLive = false;
+        let visibleCount = 0;
+        let cardsHtml = '';
+
+        FIXTURES_RAW.forEach(m => {
+          const homeT = TEAMS[m.home];
+          const awayT = TEAMS[m.away];
+          const mTime = new Date(m.time);
+          const endTime = new Date(mTime.getTime() + (115 * 60 * 1000));
+
+          // Status Calculators
+          const isLive = simulatedTime >= mTime && simulatedTime < endTime;
+          const isCompleted = simulatedTime >= endTime;
+          
+          if (isLive) hasLive = true;
+
+          // Filters
+          if (isCompleted && !showCompleted) return;
+          if (showFavsOnly) {
+            const hasMatchFav = favedMatches.includes(m.id);
+            const hasHomeFav = favedTeams.includes(m.home);
+            const hasAwayFav = favedTeams.includes(m.away);
+            if (!hasMatchFav && !hasHomeFav && !hasAwayFav) return;
+          }
+
+          if (query) {
+            const matchesQuery = homeT.name.toLowerCase().includes(query) || 
+                                 awayT.name.toLowerCase().includes(query) || 
+                                 m.city.toLowerCase().includes(query);
+            if (!matchesQuery) return;
+          }
+
+          visibleCount++;
+
+          // Live details
+          let statusText = 'Upcoming';
+          let borderStyle = 'border-[#0e291d]';
+          let scoreText = 'VS';
+
+          if (isLive) {
+            statusText = '🔴 LIVE';
+            borderStyle = 'border-emerald-500 shadow-lg shadow-emerald-500/5 bg-[#07170f]';
+            scoreText = `${m.hScore} - ${m.aScore}`;
+          } else if (isCompleted) {
+            statusText = 'FT';
+            borderStyle = 'border-[#0e291d] opacity-80';
+            scoreText = `${m.hScore} - ${m.aScore}`;
+          }
+
+          // Date formatting in selected timezone
+          const tzKey = timezone === 'GCC' ? 'Asia/Dubai' : 'Asia/Kolkata';
+          const localDate = mTime.toLocaleDateString('en-US', { timeZone: tzKey, day: 'numeric', month: 'short', weekday: 'short' });
+          const localTime = mTime.toLocaleTimeString('en-US', { timeZone: tzKey, hour: 'numeric', minute: '2-digit', hour12: true });
+
+          // Expansion content
+          const isExpanded = expMatchId === m.id;
+          let detailsHtml = '';
+          if (isExpanded) {
+            const narrative = MATCH_NARRATIVES[m.id] || `An intensely highly anticipated tournament Group ${m.group} fixture staged at the stadium in ${m.city}.`;
+            const homeStar = STAR_PLAYERS[m.home] || { name: "Squad Champion", position: "Pro Key", club: homeT.name, desc: "Primary playmaker to watch." };
+            const awayStar = STAR_PLAYERS[m.away] || { name: "Squad Captain", position: "Pro Key", club: awayT.name, desc: "Primary dangerous striker." };
+
+            detailsHtml = `
+              <div class="p-4 bg-[#050b08] border-t border-[#0e291d] flex flex-col gap-3">
+                <div class="p-3 bg-[#0a1711] rounded-lg border border-[#0e291d]">
+                  <h4 class="text-yellow-400 text-xs font-bold mb-1">🔥 WHY THIS MATCH MATTERS</h4>
+                  <p class="text-gray-300 text-xs leading-relaxed">${narrative}</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div class="p-3 bg-[#0a1711]/50 border border-[#0e291d] rounded-lg">
+                    <span class="text-[9px] text-emerald-400 font-mono block">⭐ HOME KEY PLAYER</span>
+                    <strong class="text-white text-xs block mt-0.5">${homeStar.name} (${homeStar.position})</strong>
+                    <div class="text-[10px] text-gray-400">Club: ${homeStar.club}</div>
+                    <p class="text-gray-300 text-[11px] mt-1 leading-snug">${homeStar.desc}</p>
+                  </div>
+                  <div class="p-3 bg-[#0a1711]/50 border border-[#0e291d] rounded-lg">
+                    <span class="text-[9px] text-[#f59e0b] font-mono block">⭐ AWAY KEY PLAYER</span>
+                    <strong class="text-white text-xs block mt-0.5">${awayStar.name} (${awayStar.position})</strong>
+                    <div class="text-[10px] text-gray-400">Club: ${awayStar.club}</div>
+                    <p class="text-gray-300 text-[11px] mt-1 leading-snug">${awayStar.desc}</p>
+                  </div>
+                </div>
+                <div class="text-[10px] text-gray-500 text-center">📍 Venue: FIFA Arena in ${m.city}</div>
+              </div>
+            `;
+          }
+
+          const hasMatchFav = favedMatches.includes(m.id) ? '★' : '☆';
+          const homeStarOn = favedTeams.includes(m.home) ? '★' : '☆';
+          const awayStarOn = favedTeams.includes(m.away) ? '★' : '☆';
+
+          cardsHtml += `
+            <div id="card-${m.id}" class="bg-[#0a1711] rounded-2xl border ${borderStyle} transition-all duration-200">
+              <div class="p-4">
+                <!-- Card Header -->
+                <div class="flex items-center justify-between pb-2 mb-2.5 border-b border-[#0e291d]/40">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[10px] bg-[#0e291d] text-[#f59e0b] font-mono px-2 py-0.5 rounded-full font-bold">Group ${m.group}</span>
+                    <span class="text-[10px] bg-emerald-950 text-emerald-400 px-2 py-0.5 rounded">${statusText}</span>
+                  </div>
+                  <button onclick="toggleMatchFav(${m.id})" class="text-yellow-400 text-sm py-0.5 px-2">${hasMatchFav}</button>
+                </div>
+
+                <!-- Match Date Block -->
+                <div class="flex justify-between text-xs text-gray-400 mb-3">
+                  <span class="text-white font-bold">${localDate} • <span class="font-mono text-emerald-400">${localTime}</span></span>
+                  <span class="text-gray-300 truncate max-w-[150px]">📍 ${m.city}</span>
+                </div>
+
+                <!-- Teams Block -->
+                <div class="grid grid-cols-7 items-center gap-1 py-1">
+                  <!-- Home -->
+                  <div class="col-span-3 text-center flex flex-col items-center">
+                    <button onclick="toggleTeamFav('${m.home}')" class="text-xs text-yellow-400 font-bold mb-0.5 flex items-center gap-1">
+                      <span class="text-2xl">${homeT.flag}</span> <span>${homeStarOn}</span>
+                    </button>
+                    <span class="text-sm font-extrabold text-white leading-tight flex flex-wrap justify-center gap-1">
+                      <span>${homeT.name}</span>
+                      <span class="text-yellow-500 font-normal font-mono">(#${homeT.ranking})</span>
+                    </span>
+                  </div>
+                  <!-- Versus/Score -->
+                  <div class="col-span-1 text-center">
+                    <span class="font-mono text-lg font-black text-white bg-[#050b08]/80 py-1.5 px-2.5 border border-[#0e291d] rounded-xl">${scoreText}</span>
+                  </div>
+                  <!-- Away -->
+                  <div class="col-span-3 text-center flex flex-col items-center">
+                    <button onclick="toggleTeamFav('${m.away}')" class="text-xs text-yellow-400 font-bold mb-0.5 flex items-center gap-1">
+                      <span class="text-2xl">${awayT.flag}</span> <span>${awayStarOn}</span>
+                    </button>
+                    <span class="text-sm font-extrabold text-white leading-tight flex flex-wrap justify-center gap-1">
+                      <span>${awayT.name}</span>
+                      <span class="text-yellow-500 font-normal font-mono">(#${awayT.ranking})</span>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Details Action Button -->
+                <div class="mt-4 pt-2 border-t border-[#0e291d]/40 flex justify-center">
+                  <button onclick="toggleMatchExpand(${m.id})" class="text-[10px] text-emerald-400 uppercase tracking-widest font-black">
+                    ${isExpanded ? '▲ Hide Details' : '▼ Tap for Match Details'}
+                  </button>
+                </div>
+              </div>
+              ${detailsHtml}
+            </div>
+          `;
+        });
+
+        if (visibleCount === 0) {
+          cardsHtml = `
+            <div class="p-8 text-center bg-[#0a1711] rounded-2xl border border-dashed border-[#0e291d]">
+              <span class="text-3xl block mb-2">🔍</span>
+              <h3 class="text-white font-bold">No Matches Match Selection</h3>
+              <p class="text-xs text-gray-400 mt-1">Try to display completed matches or reset your favorites settings.</p>
+            </div>
+          `;
+        }
+
+        document.getElementById('live-alert').className = hasLive ? 'bg-gradient-to-r from-emerald-950/50 via-emerald-800/20 to-emerald-950/50 border border-emerald-500/45 p-3 rounded-xl flex items-center justify-between animate-pulse' : 'hidden';
+        listDiv.innerHTML = cardsHtml;
+        document.getElementById('match-count-badge').innerText = `Showing ${visibleCount} matches`;
+        document.getElementById('favs-counter').innerText = favedTeams.length + favedMatches.length;
       }
     </script>
   </body>
 </html>
-

@@ -1,15 +1,17 @@
 {
-  "name": "FIFA World Cup 2026 Fixtures",
   "short_name": "WC 2026",
-  "start_url": "/FIFA_WC_FIXTURE/",
-  "display": "standalone",
-  "background_color": "#0b1020",
-  "theme_color": "#0b1020",
+  "name": "FIFA World Cup 2026 Companion",
   "icons": [
     {
-      "src": "icon-512.png",
+      "src": "icon-512.png.png",
+      "type": "image/png",
       "sizes": "512x512",
-      "type": "image/png"
+      "purpose": "any maskable"
     }
-  ]
+  ],
+  "start_url": "index.html",
+  "background_color": "#050b08",
+  "theme_color": "#0e291d",
+  "display": "standalone",
+  "orientation": "portrait"
 }
